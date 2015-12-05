@@ -17,7 +17,7 @@ namespace HelloWorld.ViewModels
 
         public MainViewModel()
         {
-            TestText = "This is a Test";
+            TestText = "Hello World!";
         }
     }
 }

@@ -43,8 +43,7 @@ namespace Prism
         /// </remarks>
         protected virtual IModuleCatalog CreateModuleCatalog()
         {
-            throw new NotImplementedException();
-            //return new ModuleCatalog();
+            return new ModuleCatalog();
         }
 
         /// <summary>
