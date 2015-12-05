@@ -37,7 +37,7 @@ namespace Prism.Autofac
         public override void Run(bool runWithDefaultConfiguration)
         {
             _useDefaultConfiguration = runWithDefaultConfiguration;
-            
+
             Logger = CreateLogger();
             if (Logger == null)
             {
@@ -59,8 +59,8 @@ namespace Prism.Autofac
             ConfigureContainerBuilder(builder);
 
             Logger.Log(Resources.CreatingAutofacContainer, Category.Debug, Priority.Low);
-            AutofacCore.Container = CreateContainer(builder);
-            if (AutofacCore.Container == null)
+            Container = CreateContainer(builder);
+            if (Container == null)
             {
                 throw new InvalidOperationException(Resources.NullAutofacContainerException);
             }
@@ -70,7 +70,7 @@ namespace Prism.Autofac
 
             Logger.Log(Resources.ConfiguringViewModelLocator, Category.Debug, Priority.Low);
             ConfigureViewModelLocator();
-
+            
             Logger.Log(Resources.RegisteringFrameworkExceptionTypes, Category.Debug, Priority.Low);
             RegisterFrameworkExceptionTypes();
 
@@ -90,7 +90,7 @@ namespace Prism.Autofac
         /// </summary>
         protected override void ConfigureServiceLocator()
         {
-            var serviceLocator = new AutofacServiceLocatorAdapter(AutofacCore.Container);
+            var serviceLocator = new AutofacServiceLocatorAdapter(Container);
             ServiceLocator.SetLocatorProvider(() => serviceLocator);
 
             // register the locator in Autofac as well
@@ -102,7 +102,7 @@ namespace Prism.Autofac
         /// </summary>
         protected override void ConfigureViewModelLocator()
         {
-            ViewModelLocationProvider.SetDefaultViewModelFactory((type) => AutofacCore.Container.Resolve(type));
+            ViewModelLocationProvider.SetDefaultViewModelFactory((type) => Container.Resolve(type));
         }
 
         /// <summary>
@@ -133,7 +133,6 @@ namespace Prism.Autofac
         protected virtual void ConfigureContainerBuilder(ContainerBuilder builder)
         {
             builder.RegisterInstance(Logger).As<ILoggerFacade>();
-            //builder.RegisterInstance(ModuleCatalog);
 
             if (_useDefaultConfiguration)
             {
@@ -166,11 +165,11 @@ namespace Prism.Autofac
         /// <param name="registerAsSingleton">Registers the type as a singleton.</param>
         protected void RegisterTypeIfMissing<TFrom, TTarget>(ContainerBuilder builder, bool registerAsSingleton = false)
         {
-            if (AutofacCore.Container != null && AutofacCore.Container.IsRegistered<TFrom>())
+            if (Container != null && Container.IsRegistered<TFrom>())
             {
                 Logger.Log(
                     String.Format(CultureInfo.CurrentCulture, Resources.TypeMappingAlreadyRegistered,
-                        typeof (TFrom).Name),
+                        typeof(TFrom).Name),
                     Category.Debug, Priority.Low);
             }
             else
@@ -203,7 +202,7 @@ namespace Prism.Autofac
             {
                 throw new ArgumentNullException("toType");
             }
-            if (AutofacCore.Container.IsRegistered(fromType))
+            if (Container.IsRegistered(fromType))
             {
                 Logger.Log(String.Format(CultureInfo.CurrentCulture, Resources.TypeMappingAlreadyRegistered, fromType.Name),
                     Category.Debug, Priority.Low);
@@ -219,7 +218,7 @@ namespace Prism.Autofac
                 {
                     builder.RegisterType(toType).As(fromType);
                 }
-                builder.Update(AutofacCore.Container);
+                builder.Update(Container);
             }
         }
 
@@ -260,7 +259,7 @@ namespace Prism.Autofac
                 registration.SingleInstance();
             }
 
-            containerUpdater.Update(AutofacCore.Container);
+            containerUpdater.Update(Container);
         }
     }
 }

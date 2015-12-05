@@ -13,7 +13,7 @@ namespace HelloWorld
 {
     public class App : AutofacApplication
     {
-        private Log4NetLogger _logger = new Log4NetLogger();
+        private readonly Log4NetLogger _logger = new Log4NetLogger();
 
         public App()
         {
