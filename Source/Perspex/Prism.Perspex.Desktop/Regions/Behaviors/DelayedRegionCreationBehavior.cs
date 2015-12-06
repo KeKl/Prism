@@ -3,6 +3,9 @@
 using System;
 using System.Globalization;
 using System.Windows;
+using Perspex;
+using Perspex.Controls;
+using Perspex.Interactivity;
 using Prism.Properties;
 
 namespace Prism.Regions.Behaviors
@@ -46,9 +49,9 @@ namespace Prism.Regions.Behaviors
         /// The element that will host the Region. 
         /// </summary>
         /// <value>The target element.</value>
-        public DependencyObject TargetElement
+        public PerspexObject TargetElement
         {
-            get { return this.elementWeakReference != null ? this.elementWeakReference.Target as DependencyObject : null; }
+            get { return this.elementWeakReference != null ? this.elementWeakReference.Target as PerspexObject : null; }
             set { this.elementWeakReference = new WeakReference(value); }
         }
 
@@ -87,7 +90,7 @@ namespace Prism.Regions.Behaviors
 
         private void TryCreateRegion()
         {
-            DependencyObject targetElement = this.TargetElement;
+            PerspexObject targetElement = this.TargetElement;
             if (targetElement == null)
             {
                 this.Detach();
@@ -100,7 +103,7 @@ namespace Prism.Regions.Behaviors
 
                 if (!this.regionCreated)
                 {
-                    string regionName = this.RegionManagerAccessor.GetRegionName(targetElement);
+                    string regionName = this.RegionManagerAccessor.GetRegionName((IControl)targetElement);
                     CreateRegion(targetElement, regionName);
                     this.regionCreated = true;
                 }
@@ -113,7 +116,7 @@ namespace Prism.Regions.Behaviors
         /// <param name="targetElement">The target element that will host the <see cref="IRegion"/>.</param>
         /// <param name="regionName">Name of the region.</param>
         /// <returns>The created <see cref="IRegion"/></returns>
-        protected virtual IRegion CreateRegion(DependencyObject targetElement, string regionName)
+        protected virtual IRegion CreateRegion(PerspexObject targetElement, string regionName)
         {
             if (targetElement == null) throw new ArgumentNullException("targetElement");
             try
@@ -138,19 +141,23 @@ namespace Prism.Regions.Behaviors
 
         private void WireUpTargetElement()
         {
-            FrameworkElement element = this.TargetElement as FrameworkElement;
+            var element = this.TargetElement as IControl;
             if (element != null)
             {
-                element.Loaded += this.ElementLoaded;
+                // TODO Add
+                throw new NotImplementedException();
+                //element.Loaded += this.ElementLoaded;
             }
         }
 
         private void UnWireTargetElement()
         {
-            FrameworkElement element = this.TargetElement as FrameworkElement;
+            var element = this.TargetElement as IControl;
             if (element != null)
             {
-                element.Loaded -= this.ElementLoaded;
+                // TODO Add
+                throw new NotImplementedException();
+                //element.Loaded -= this.ElementLoaded;
             }
         }
     }

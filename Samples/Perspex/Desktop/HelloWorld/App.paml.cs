@@ -7,14 +7,16 @@ using Perspex.Markup.Xaml;
 using Perspex.Themes.Default;
 using Prism;
 using Prism.Autofac;
+using Prism.Events;
 using Prism.Logging;
 
 namespace HelloWorld
 {
     public class App : AutofacApplication
     {
-        private readonly Log4NetLogger _logger = new Log4NetLogger();
-
+        /// <summary>
+        /// Creates new instance of App.
+        /// </summary>
         public App()
         {
             RegisterServices();
@@ -22,6 +24,8 @@ namespace HelloWorld
             Styles = new DefaultTheme();
             InitializeComponent();
         }
+
+        private readonly Log4NetLogger _logger = new Log4NetLogger();
 
         private void RegisterPlatform()
         {
@@ -34,6 +38,10 @@ namespace HelloWorld
             loader.Load(typeof (App), this);
         }
 
+        /// <summary>
+        /// Creates the Logger.
+        /// </summary>
+        /// <returns></returns>
         protected override ILoggerFacade CreateLogger()
         {
             return _logger;
@@ -49,6 +57,10 @@ namespace HelloWorld
             builder.RegisterModule<MainModule>();
         }
 
+        /// <summary>
+        /// Creates the shell.
+        /// </summary>
+        /// <returns></returns>
         protected override IControl CreateShell()
         {
             return Container.Resolve<IControl>();
@@ -62,11 +74,6 @@ namespace HelloWorld
             base.InitializeShell();
 
             var window = (Window)this.Shell;
-
-            //var regionManager = Container.Resolve<IRegionManager>();
-            //regionManager.RegisterViewWithRegion(RegionNames.TopNavigationRegionName, typeof(ControlView));
-
-            ////regionManager.RegisterViewWithRegion(RegionNames.ContentRegionName, typeof(ShellDockingManager));
 
             window.Show();
 

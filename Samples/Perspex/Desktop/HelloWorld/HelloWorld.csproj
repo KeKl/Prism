@@ -179,6 +179,8 @@
       <DependentUpon>App.paml</DependentUpon>
     </Compile>
     <Compile Include="AutofacModules\MainModule.cs" />
+    <Compile Include="Events\StandardEvents.cs" />
+    <Compile Include="Events\AppEvent.cs" />
     <Compile Include="Logging\Log4NetLogger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

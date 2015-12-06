@@ -32,7 +32,8 @@ namespace Prism.Regions
 
         static RegionManager()
         {
-            
+            RegionNameProperty.Changed.Subscribe(args => OnSetRegionNameCallback(args.Sender, args));
+            RegionContextProperty.Changed.Subscribe(args => OnRegionContextChanged(args.Sender, args));
         }
 
         private static readonly WeakDelegatesManager updatingRegionsListeners = new WeakDelegatesManager();
@@ -48,11 +49,16 @@ namespace Prism.Regions
         /// will create and adapt a new region for that control, and register it
         /// in the <see cref="IRegionManager"/> with the specified region name.
         /// </remarks>
-        public static readonly PerspexProperty RegionNameProperty = PerspexProperty.RegisterAttached(
-            "RegionName",
-            typeof(string),
-            typeof(RegionManager),
-            new PropertyMetadata(OnSetRegionNameCallback));
+        public static readonly PerspexProperty<string> RegionNameProperty = 
+            PerspexProperty.RegisterAttached<IControl, string>("RegionName", typeof(RegionManager));
+
+        private static void OnSetRegionNameCallback(PerspexObject element, PerspexPropertyChangedEventArgs args)
+        {
+            if (!IsInDesignMode((IControl)element))
+            {
+                CreateRegion((IControl)element);
+            }
+        }
 
         /// <summary>
         /// Sets the <see cref="RegionNameProperty"/> attached property.
@@ -77,10 +83,9 @@ namespace Prism.Regions
             return regionTarget.GetValue(RegionNameProperty) as string;
         }
 
-        private static readonly PerspexProperty ObservableRegionProperty =
-            PerspexProperty.RegisterAttached("ObservableRegion", typeof(ObservableObject<IRegion>), typeof(RegionManager), null);
-
-
+        private static readonly PerspexProperty<ObservableObject<IRegion>> ObservableRegionProperty =
+            PerspexProperty.RegisterAttached<IControl, ObservableObject<IRegion>>("ObservableRegion", typeof(RegionManager));
+        
         /// <summary>
         /// Returns an <see cref="ObservableObject{T}"/> wrapper that can hold an <see cref="IRegion"/>. Using this wrapper
         /// you can detect when an <see cref="IRegion"/> has been created by the <see cref="RegionAdapterBase{T}"/>. 
@@ -95,7 +100,7 @@ namespace Prism.Regions
         {
             if (view == null) throw new ArgumentNullException("view");
 
-            ObservableObject<IRegion> regionWrapper = view.GetValue(ObservableRegionProperty) as ObservableObject<IRegion>;
+            ObservableObject<IRegion> regionWrapper = view.GetValue(ObservableRegionProperty);
 
             if (regionWrapper == null)
             {
@@ -106,19 +111,11 @@ namespace Prism.Regions
             return regionWrapper;
         }
 
-        private static void OnSetRegionNameCallback(IControl element, PerspexPropertyChangedEventArgs args)
-        {
-            if (!IsInDesignMode(element))
-            {
-                CreateRegion(element);
-            }
-        }
-
         private static void CreateRegion(IControl element)
         {
             IServiceLocator locator = ServiceLocator.Current;
             DelayedRegionCreationBehavior regionCreationBehavior = locator.GetInstance<DelayedRegionCreationBehavior>();
-            regionCreationBehavior.TargetElement = element;
+            regionCreationBehavior.TargetElement = (PerspexObject)element;
             regionCreationBehavior.Attach();
         }
 
@@ -133,9 +130,9 @@ namespace Prism.Regions
         /// will create and adapt a new region for that control, and register it
         /// in the <see cref="IRegionManager"/> with the specified region name.
         /// </remarks>
-        public static readonly PerspexProperty RegionManagerProperty =
-            PerspexProperty.RegisterAttached("RegionManager", typeof(IRegionManager), typeof(RegionManager), null);
-
+        public static readonly PerspexProperty<IRegionManager> RegionManagerProperty =
+            PerspexProperty.RegisterAttached<PerspexObject, IRegionManager>("RegionManager", typeof (RegionManager));
+        
         /// <summary>
         /// Gets the value of the <see cref="RegionNameProperty"/> attached property.
         /// </summary>
@@ -144,7 +141,7 @@ namespace Prism.Regions
         public static IRegionManager GetRegionManager(IControl target)
         {
             if (target == null) throw new ArgumentNullException("target");
-            return (IRegionManager)target.GetValue(RegionManagerProperty);
+            return target.GetValue(RegionManagerProperty);
         }
 
         /// <summary>
@@ -161,10 +158,10 @@ namespace Prism.Regions
         /// <summary>
         /// Identifies the RegionContext attached property.
         /// </summary>
-        public static readonly PerspexProperty RegionContextProperty =
-            PerspexProperty.RegisterAttached("RegionContext", typeof(object), typeof(RegionManager), new PropertyMetadata(OnRegionContextChanged));
-
-        private static void OnRegionContextChanged(IControl depObj, PerspexPropertyChangedEventArgs e)
+        public static readonly PerspexProperty<object> RegionContextProperty =
+            PerspexProperty.RegisterAttached<PerspexObject, object>("RegionContext", typeof(RegionManager));
+        
+        private static void OnRegionContextChanged(PerspexObject depObj, PerspexPropertyChangedEventArgs e)
         {
             if (RegionContext.GetObservableContext(depObj).Value != e.NewValue)
             {
@@ -190,8 +187,8 @@ namespace Prism.Regions
         /// <param name="value">The value.</param>
         public static void SetRegionContext(IControl target, object value)
         {
-            if (target == null) throw new ArgumentNullException("target");
-            target.SetValue(RegionContextProperty, value);
+            //if (target == null) throw new ArgumentNullException("target");
+            //target.SetValue(RegionContextProperty, value);
         }
 
         /// <summary>
@@ -229,7 +226,8 @@ namespace Prism.Regions
 
         private static bool IsInDesignMode(IControl element)
         {
-            return DesignerProperties.GetIsInDesignMode(element);
+            throw new NotImplementedException();
+            //return DesignerProperties.GetIsInDesignMode(element);
         }
 
         #endregion

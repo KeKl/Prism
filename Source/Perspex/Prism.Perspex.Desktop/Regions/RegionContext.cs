@@ -2,6 +2,7 @@
 
 using System;
 using System.Windows;
+using Perspex;
 using Perspex.Controls;
 using Prism.Regions.Behaviors;
 using Prism.Common;
@@ -16,13 +17,13 @@ namespace Prism.Regions
     /// </summary>
     public static class RegionContext
     {
-        private static readonly DependencyProperty ObservableRegionContextProperty =
-            DependencyProperty.RegisterAttached("ObservableRegionContext", typeof(ObservableObject<object>), typeof(RegionContext), null);
-
+        private static readonly PerspexProperty<ObservableObject<object>> ObservableRegionContextProperty =
+            PerspexProperty.RegisterAttached<IControl, ObservableObject<object>>("ObservableRegionContext", typeof(RegionContext));
+        
         /// <summary>
         /// Returns an <see cref="ObservableObject{T}"/> wrapper around the RegionContext value. The RegionContext
         /// will be set on any views (dependency objects) that are inside the <see cref="IRegion.Views"/> collection by 
-        /// the <see cref="BindRegionContextToDependencyObjectBehavior"/> Behavior.
+        /// the <see cref="BindRegionContextToPerspexObjectBehavior"/> Behavior.
         /// The RegionContext will also be set to the control that hosts the Region, by the <see cref="SyncRegionContextWithHostBehavior"/> Behavior.
         /// 
         /// If the <see cref="ObservableObject{T}"/> wrapper does not already exist, an empty one will be created. This way, an observer can 
@@ -30,11 +31,11 @@ namespace Prism.Regions
         /// </summary>
         /// <param name="view">Any view that hold the RegionContext value. </param>
         /// <returns>Wrapper around the Regioncontext value. </returns>
-        public static ObservableObject<object> GetObservableContext(IControl view)
+        public static ObservableObject<object> GetObservableContext(PerspexObject view)
         {
             if (view == null) throw new ArgumentNullException("view");
 
-            ObservableObject<object> context = view.GetValue(ObservableRegionContextProperty) as ObservableObject<object>;
+            ObservableObject<object> context = view.GetValue(ObservableRegionContextProperty);
 
             if (context == null)
             {
@@ -44,6 +45,5 @@ namespace Prism.Regions
            
             return context;
         }
-
     }
 }

@@ -1,9 +1,12 @@
 
 
+using System;
 using System.ComponentModel;
-using System.Windows;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using Perspex;
 using Perspex.Controls;
+using Prism.Mvvm;
 
 namespace Prism.Common
 {
@@ -17,17 +20,19 @@ namespace Prism.Common
     /// <typeparam name="T">The type of the property that's wrapped in the Observable object</typeparam>
     public class ObservableObject<T> : Control, INotifyPropertyChanged
     {
+        static ObservableObject()
+        {
+            ValueProperty.Changed.Subscribe(args =>
+            {
+                ValueChangedCallback(args.Sender, args);
+            });
+        }
+
         /// <summary>
         /// Identifies the Value property of the ObservableObject
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1000:DoNotDeclareStaticMembersOnGenericTypes", Justification = "This is the pattern for WPF dependency properties")]
-        public static readonly PerspexProperty ValueProperty =
-                PerspexProperty.Register("Value", typeof(T), typeof(ObservableObject<T>), new PropertyMetadata(ValueChangedCallback));
-
-        /// <summary>
-        /// Event that gets invoked when the Value property changes. 
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public static readonly PerspexProperty<T> ValueProperty =
+            PerspexProperty.Register<ObservableObject<T>, T>(nameof(Value));
 
         /// <summary>
         /// The value that's wrapped inside the ObservableObject.
@@ -35,18 +40,20 @@ namespace Prism.Common
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods")]
         public T Value
         {
-            get { return (T)this.GetValue(ValueProperty); }
+            get { return this.GetValue(ValueProperty); }
             set { this.SetValue(ValueProperty, value); }
         }
 
-        private static void ValueChangedCallback(IControl d, PerspexPropertyChangedEventArgs e)
+        private Subject<PerspexPropertyChangedEventArgs> _propertyChanged = new Subject<PerspexPropertyChangedEventArgs>();
+
+        public IObservable<PerspexPropertyChangedEventArgs> PropertyChanged
         {
-            ObservableObject<T> thisInstance = ((ObservableObject<T>)d);
-            PropertyChangedEventHandler eventHandler = thisInstance.PropertyChanged;
-            if (eventHandler != null)
-            {
-                eventHandler(thisInstance, new PropertyChangedEventArgs("Value"));
-            }
+            get { return this._propertyChanged.AsObservable(); }
+        }
+
+        private static void ValueChangedCallback(PerspexObject d, PerspexPropertyChangedEventArgs e)
+        {
+            ((ObservableObject<T>)d)._propertyChanged.OnNext(e);
         }
     }
 }

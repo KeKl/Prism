@@ -130,23 +130,6 @@
       <HintPath>..\..\packages\Perspex.Desktop.0.2.0-alpha3\lib\net45\Perspex.Win32.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serilog, Version=1.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serilog.1.5.9\lib\net45\Serilog.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Serilog.FullNetFx, Version=1.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serilog.1.5.9\lib\net45\Serilog.FullNetFx.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SharpDX">
-      <HintPath>$(SharpDXPackageBinDir)\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Direct2D1">
-      <HintPath>$(SharpDXPackageBinDir)\SharpDX.Direct2D1.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.DXGI">
-      <HintPath>$(SharpDXPackageBinDir)\SharpDX.DXGI.dll</HintPath>
-    </Reference>
     <Reference Include="Splat, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Splat.1.6.2\lib\Net45\Splat.dll</HintPath>
       <Private>True</Private>
@@ -176,7 +159,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
@@ -190,7 +172,7 @@
     <Compile Include="Common\CallbackHelper.cs" />
     <Compile Include="Common\ListDictionary.cs" />
     <Compile Include="Common\MvvmHelpers.cs" />
-    <None Include="Common\ObservableObject.cs" />
+    <Compile Include="Common\ObservableObject.cs" />
     <Compile Include="Common\UriParsingHelper.cs" />
     <Compile Include="Events\WeakDelegatesManager.cs" />
     <Compile Include="Logging\TextLogger.cs" />
@@ -248,21 +230,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Regions\AllActiveRegion.cs" />
+    <Compile Include="Regions\AllActiveRegion.cs" />
     <None Include="Regions\Behaviors\AutoPopulateRegionBehavior.cs" />
     <None Include="Regions\Behaviors\BindRegionContextToDependencyObjectBehavior.cs" />
     <None Include="Regions\Behaviors\ClearChildViewsRegionBehavior.cs" />
-    <None Include="Regions\Behaviors\DelayedRegionCreationBehavior.cs" />
+    <Compile Include="Regions\Behaviors\DelayedRegionCreationBehavior.cs" />
     <Compile Include="Regions\Behaviors\IHostAwareRegionBehavior.cs" />
     <None Include="Regions\Behaviors\RegionActiveAwareBehavior.cs" />
-    <None Include="Regions\Behaviors\RegionCreationException.cs" />
-    <None Include="Regions\Behaviors\RegionCreationException.Desktop.cs" />
+    <Compile Include="Regions\Behaviors\RegionCreationException.cs" />
+    <Compile Include="Regions\Behaviors\RegionCreationException.Desktop.cs" />
     <None Include="Regions\Behaviors\RegionManagerRegistrationBehavior.cs" />
     <None Include="Regions\Behaviors\RegionMemberLifetimeBehavior.cs" />
     <None Include="Regions\Behaviors\SelectorItemsSourceSyncBehavior.cs" />
     <None Include="Regions\Behaviors\SyncRegionContextWithHostBehavior.cs" />
     <None Include="Regions\ContentControlRegionAdapter.cs" />
-    <None Include="Regions\DefaultRegionManagerAccessor.cs" />
+    <Compile Include="Regions\DefaultRegionManagerAccessor.cs" />
     <Compile Include="Regions\IConfirmNavigationRequest.cs" />
     <Compile Include="Regions\INavigateAsync.cs" />
     <Compile Include="Regions\INavigationAware.cs" />
@@ -288,14 +270,14 @@
     <Compile Include="Regions\NavigationContext.cs" />
     <Compile Include="Regions\NavigationParameters.cs" />
     <Compile Include="Regions\NavigationResult.cs" />
-    <None Include="Regions\Region.cs" />
-    <None Include="Regions\RegionAdapterBase.cs" />
+    <Compile Include="Regions\Region.cs" />
+    <Compile Include="Regions\RegionAdapterBase.cs" />
     <Compile Include="Regions\RegionAdapterMappings.cs" />
     <Compile Include="Regions\RegionBehavior.cs" />
     <Compile Include="Regions\RegionBehaviorCollection.cs" />
     <Compile Include="Regions\RegionBehaviorFactory.cs" />
-    <None Include="Regions\RegionContext.cs" />
-    <None Include="Regions\RegionManager.cs" />
+    <Compile Include="Regions\RegionContext.cs" />
+    <Compile Include="Regions\RegionManager.cs" />
     <Compile Include="Regions\RegionMemberLifetimeAttribute.cs" />
     <Compile Include="Regions\RegionNavigationContentLoader.cs" />
     <Compile Include="Regions\RegionNavigationEventArgs.cs" />
@@ -305,7 +287,7 @@
     <Compile Include="Regions\RegionNavigationService.cs" />
     <Compile Include="Regions\RegionViewRegistry.cs" />
     <None Include="Regions\SelectorRegionAdapter.cs" />
-    <None Include="Regions\SingleActiveRegion.cs" />
+    <Compile Include="Regions\SingleActiveRegion.cs" />
     <Compile Include="Regions\SyncActiveStateAttribute.cs" />
     <Compile Include="Regions\UpdateRegionsException.cs" />
     <Compile Include="Regions\UpdateRegionsException.Desktop.cs" />

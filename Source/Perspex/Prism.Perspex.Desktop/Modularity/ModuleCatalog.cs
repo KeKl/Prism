@@ -124,7 +124,7 @@ namespace Prism.Modularity
             {
                 throw new ArgumentNullException("xamlStream");
             }
-
+            
             throw new NotImplementedException();
 
             //return XamlReader.Load(xamlStream) as ModuleCatalog;
