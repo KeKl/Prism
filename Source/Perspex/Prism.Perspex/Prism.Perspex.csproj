@@ -37,13 +37,13 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
     <Folder Include="Common\" />
     <Folder Include="Logging\" />
-    <Folder Include="Mvvm\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationBase.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Extensions\ServiceLocatorExtensions.cs" />
+    <Compile Include="Mvvm\ViewModelLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

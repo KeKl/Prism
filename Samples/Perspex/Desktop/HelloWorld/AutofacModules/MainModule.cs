@@ -12,7 +12,7 @@ namespace HelloWorld.AutofacModules
             base.Load(builder);
             
             builder.RegisterType<MainWindow>().As<IControl>().SingleInstance();
-            builder.RegisterType<MainViewModel>().SingleInstance();
+            builder.RegisterType<MainWindowViewModel>().SingleInstance();
         }
     }
 }

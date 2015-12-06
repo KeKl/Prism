@@ -7,12 +7,18 @@ namespace HelloWorld.Views
 {
     public class MainWindow : Window
     {
-        public MainWindow(MainViewModel viewModel)
+        public MainWindow()
         {
             this.InitializeComponent();
-
-            DataContext = viewModel;
         }
+
+        // With autofac DI
+        //public MainWindow(MainViewModel viewModel)
+        //{
+        //    this.InitializeComponent();
+
+        //    DataContext = viewModel;
+        //}
 
         private void InitializeComponent()
         {

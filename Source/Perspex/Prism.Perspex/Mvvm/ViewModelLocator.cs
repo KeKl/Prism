@@ -1,19 +1,17 @@
 ﻿using System;
-using System.Drawing;
-using System.Reactive;
 using Perspex;
 using Perspex.Controls;
 
 namespace Prism.Mvvm
 {
     /// <summary>
-    /// This class defines the attached property and related change handler that calls the <see cref="Prism.Mvvm.ViewModelLocationProvider"/>.
+    /// This class defines the attached property and related change handler that calls the <see cref="ViewModelLocationProvider"/>.
     /// </summary>
     public static class ViewModelLocator
     {
         static ViewModelLocator()
         {
-            AutoWireViewModelProperty.Changed.Subscribe(args =>
+            var d = AutoWireViewModelProperty.Changed.Subscribe(args =>
             {
                 if ((bool)args.NewValue)
                     ViewModelLocationProvider.AutoWireViewModelChanged(args.Sender, Bind);
@@ -21,14 +19,14 @@ namespace Prism.Mvvm
         }
         
         public static readonly PerspexProperty<bool> AutoWireViewModelProperty =
-            PerspexProperty.RegisterAttached<IControl, bool>("AutoWireViewModel", typeof(ViewModelLocator));
+            PerspexProperty.RegisterAttached<Control, bool>("AutoWireViewModel", typeof(ViewModelLocator));
 
-        public static bool GetAutoWireViewModel(IControl obj)
+        public static bool GetAutoWireViewModel(Control obj)
         {
             return obj.GetValue(AutoWireViewModelProperty);
         }
 
-        public static void SetAutoWireViewModel(IControl obj, bool value)
+        public static void SetAutoWireViewModel(Control obj, bool value)
         {
             obj.SetValue(AutoWireViewModelProperty, value);
         }
@@ -37,12 +35,12 @@ namespace Prism.Mvvm
         /// Sets the DataContext of a View.
         /// </summary>
         /// <param name="view">The View to set the on.</param>
-        /// <param name="viewModel">The object to use as the DataContext for the View</param>
-        static void Bind(object view, object viewModel)
+        /// <param name="context">The object to use as the DataContext for the View.</param>
+        static void Bind(object view, object context)
         {
             var control = view as IControl;
             if (control != null)
-                control.DataContext = viewModel;
+                control.DataContext = context;
         }
     }
 }
