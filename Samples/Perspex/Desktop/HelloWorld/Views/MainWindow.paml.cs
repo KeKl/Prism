@@ -19,15 +19,7 @@ namespace HelloWorld.Views
 
             HandleEvents();
         }
-
-        // With autofac DI
-        //public MainWindow(MainViewModel viewModel)
-        //{
-        //    this.InitializeComponent();
-
-        //    DataContext = viewModel;
-        //}
-
+        
         private void InitializeComponent()
         {
             PerspexXamlLoader.Load(this);

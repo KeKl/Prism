@@ -91,7 +91,7 @@ namespace Prism.Regions
         /// you can detect when an <see cref="IRegion"/> has been created by the <see cref="RegionAdapterBase{T}"/>. 
         /// 
         /// If the <see cref="ObservableObject{T}"/> wrapper does not yet exist, a new wrapper will be created. When the region
-        /// gets created and assigned to the wrapper, you can use the <see cref="ObservableObject{T}.PropertyChanged"/> event 
+        /// gets created and assigned to the wrapper, you can use the <see cref="ObservableObject{T}.ValuePropertyChanged"/> event 
         /// to get notified of that change. 
         /// </summary>
         /// <param name="view">The view that will host the region. </param>

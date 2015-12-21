@@ -22,7 +22,8 @@ namespace Prism.Common
     {
         static ObservableObject()
         {
-            ValueProperty.Changed.Subscribe(args =>
+            // TODO dispose?
+            var d = ValueProperty.Changed.Subscribe(args =>
             {
                 ValueChangedCallback(args.Sender, args);
             });
@@ -44,9 +45,9 @@ namespace Prism.Common
             set { this.SetValue(ValueProperty, value); }
         }
 
-        private Subject<PerspexPropertyChangedEventArgs> _propertyChanged = new Subject<PerspexPropertyChangedEventArgs>();
+        private readonly Subject<PerspexPropertyChangedEventArgs> _propertyChanged = new Subject<PerspexPropertyChangedEventArgs>();
 
-        public IObservable<PerspexPropertyChangedEventArgs> PropertyChanged
+        public IObservable<PerspexPropertyChangedEventArgs> ValuePropertyChanged
         {
             get { return this._propertyChanged.AsObservable(); }
         }

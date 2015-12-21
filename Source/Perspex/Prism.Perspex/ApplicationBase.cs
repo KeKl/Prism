@@ -1,5 +1,7 @@
-﻿using Perspex;
+﻿using Microsoft.Practices.ServiceLocation;
+using Perspex;
 using Prism.Logging;
+using Prism.Mvvm;
 
 namespace Prism
 {
@@ -27,6 +29,14 @@ namespace Prism
         protected virtual ILoggerFacade CreateLogger()
         {
             return new DebugLogger();
+        }
+
+        /// <summary>
+        /// Configures the <see cref="ViewModelLocator"/> used by Prism.
+        /// </summary>
+        protected virtual void ConfigureViewModelLocator()
+        {
+            ViewModelLocationProvider.SetDefaultViewModelFactory((type) => ServiceLocator.Current.GetInstance(type));
         }
 
         /// <summary>

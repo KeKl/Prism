@@ -11,24 +11,28 @@ namespace Prism.Mvvm
     {
         static ViewModelLocator()
         {
+            // TODO dispose?
             var d = AutoWireViewModelProperty.Changed.Subscribe(args =>
             {
                 if ((bool)args.NewValue)
                     ViewModelLocationProvider.AutoWireViewModelChanged(args.Sender, Bind);
             });
         }
-        
+
+        /// <summary>
+        /// The AutoWireViewModel attached property.
+        /// </summary>
         public static readonly PerspexProperty<bool> AutoWireViewModelProperty =
             PerspexProperty.RegisterAttached<Control, bool>("AutoWireViewModel", typeof(ViewModelLocator));
 
-        public static bool GetAutoWireViewModel(Control obj)
+        public static bool GetAutoWireViewModel(Control control)
         {
-            return obj.GetValue(AutoWireViewModelProperty);
+            return control.GetValue(AutoWireViewModelProperty);
         }
 
-        public static void SetAutoWireViewModel(Control obj, bool value)
+        public static void SetAutoWireViewModel(Control control, bool value)
         {
-            obj.SetValue(AutoWireViewModelProperty, value);
+            control.SetValue(AutoWireViewModelProperty, value);
         }
         
         /// <summary>

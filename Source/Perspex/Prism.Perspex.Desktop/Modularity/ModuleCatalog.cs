@@ -7,6 +7,7 @@ using System.Collections.Specialized;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Windows.Markup;
 using OmniXaml.Attributes;
 using Prism.Properties;
@@ -137,18 +138,11 @@ namespace Prism.Modularity
         /// <returns>An instance of <see cref="ModuleCatalog"/> build from the XAML.</returns>
         public static ModuleCatalog CreateFromXaml(Uri builderResourceUri)
         {
-            throw new NotImplementedException();
+            var stream = WebRequest.Create(builderResourceUri).GetResponse().GetResponseStream();
 
-            //var streamInfo = Application.GetResourceStream(builderResourceUri);
-
-            //if ((streamInfo != null) && (streamInfo.Stream != null))
-            //{
-            //    return CreateFromXaml(streamInfo.Stream);
-            //}
-
-            //return null;
+            return stream != null ? CreateFromXaml(stream) : null;
         }
-
+        
         /// <summary>
         /// Loads the catalog if necessary.
         /// </summary>

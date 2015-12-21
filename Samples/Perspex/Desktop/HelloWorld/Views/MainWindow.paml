@@ -3,7 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:HelloWorld.Views;assembly=HelloWorld"
         xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Perspex"
-        mc:Ignorable="d" prism:ViewModelLocator.AutoWireViewModel="true"
+        mc:Ignorable="d" 
+        prism:ViewModelLocator.AutoWireViewModel="true"
         d:DataContext="{d:DesignInstance Type=local:MainViewModel, IsDesignTimeCreatable=True}"
         Height="500"
         Width="500">

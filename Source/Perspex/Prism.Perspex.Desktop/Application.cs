@@ -3,6 +3,7 @@ using Microsoft.Practices.ServiceLocation;
 using Perspex.Controls;
 using Prism.Modularity;
 using Prism.Mvvm;
+using Prism.Regions;
 
 namespace Prism
 {
@@ -51,14 +52,6 @@ namespace Prism
         /// </summary>
         protected virtual void ConfigureModuleCatalog()
         {
-        }
-
-        /// <summary>
-        /// Configures the <see cref="ViewModelLocator"/> used by Prism.
-        /// </summary>
-        protected virtual void ConfigureViewModelLocator()
-        {
-            ViewModelLocationProvider.SetDefaultViewModelFactory((type) => ServiceLocator.Current.GetInstance(type));
         }
 
         /// <summary>

@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{93FCEC0D-EE1B-4641-8CED-8FE257D1AD9C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Prism.Perspex.Desktop.Tests</RootNamespace>
+    <AssemblyName>Prism.Perspex.Desktop.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Cecil, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NUnit3TestAdapter.3.0.8-ctp-8\lib\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.engine, Version=3.0.5813.39036, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NUnit3TestAdapter.3.0.8-ctp-8\lib\nunit.engine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.engine.api, Version=3.0.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NUnit3TestAdapter.3.0.8-ctp-8\lib\nunit.engine.api.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.0.5813.39031, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NUnit3.TestAdapter, Version=3.0.8.0, Culture=neutral, PublicKeyToken=4cb40d35494691ac, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NUnit3TestAdapter.3.0.8-ctp-8\lib\NUnit3.TestAdapter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ApplicationFixture.cs" />
+    <None Include="CollectionChangedTracker.cs" />
+    <None Include="CollectionExtensionsFixture.cs" />
+    <None Include="CompilerHelper.Desktop.cs" />
+    <None Include="ExceptionAssert.cs" />
+    <None Include="ExceptionExtensionsFixture.cs" />
+    <None Include="Interactivity\CommandBehaviorBaseFixture.cs" />
+    <None Include="Interactivity\InteractionRequestFixture.cs" />
+    <None Include="Interactivity\InteractionRequestTriggerFixture.cs" />
+    <None Include="Interactivity\InvokeCommandActionFixture.cs" />
+    <None Include="Interactivity\PopupWindowActionFixture.cs" />
+    <None Include="ListDictionaryFixture.cs" />
+    <Compile Include="Logging\TextLoggerFixture.cs" />
+    <Compile Include="Logging\TraceLoggerFixture.Desktop.cs" />
+    <Compile Include="Modularity\ModuleCatalogFixture.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Regions\AllActiveRegionFixture.cs" />
+    <None Include="Regions\Behaviors\AutoPopulateRegionBehaviorFixture.cs" />
+    <None Include="Regions\Behaviors\BindRegionContextToDependencyObjectBehaviorFixture.cs" />
+    <None Include="Regions\Behaviors\ClearChildViewsRegionBehaviorFixture.cs" />
+    <None Include="Regions\Behaviors\DelayedRegionCreationBehaviorFixture.cs" />
+    <None Include="Regions\Behaviors\RegionActiveAwareBehaviorFixture.cs" />
+    <None Include="Regions\Behaviors\RegionManagerRegistrationBehaviorFixture.cs" />
+    <None Include="Regions\Behaviors\RegionMemberLifetimeBehaviorFixture.cs" />
+    <None Include="Regions\Behaviors\SelectorItemsSourceSyncRegionBehaviorFixture.cs" />
+    <None Include="Regions\Behaviors\SyncRegionContextWithHostBehaviorFixture.cs" />
+    <None Include="Regions\ContentControlRegionAdapterFixture.cs" />
+    <None Include="Regions\ItemsControlRegionAdapterFixture.cs" />
+    <None Include="Regions\LocatorNavigationTargetHandlerFixture.cs" />
+    <None Include="Regions\NavigationAsyncExtensionsFixture.cs" />
+    <None Include="Regions\NavigationContextFixture.cs" />
+    <None Include="Regions\RegionAdapterBaseFixture.cs" />
+    <None Include="Regions\RegionAdapterMappingsFixture.cs" />
+    <None Include="Regions\RegionBehaviorCollectionFixture.cs" />
+    <None Include="Regions\RegionBehaviorFactoryFixture.cs" />
+    <None Include="Regions\RegionBehaviorFixture.cs" />
+    <None Include="Regions\RegionFixture.cs" />
+    <None Include="Regions\RegionManagerFixture.cs" />
+    <None Include="Regions\RegionNavigationJournalFixture.cs" />
+    <None Include="Regions\RegionNavigationServiceFixture.new.cs" />
+    <None Include="Regions\RegionViewRegistryFixture.cs" />
+    <None Include="Regions\SelectorRegionAdapterFixture.cs" />
+    <None Include="Regions\SingleActiveRegionFixture.cs" />
+    <None Include="Regions\ViewsCollectionFixture.cs" />
+    <None Include="ServiceLocatorExtensionsFixture.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modularity\ModuleCatalogXaml\SimpleModuleCatalog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Prism\Prism.csproj">
+      <Project>{e6c50355-d01e-4caa-884d-d7929861315c}</Project>
+      <Name>Prism</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prism.Perspex.Desktop\Prism.Perspex.Desktop.csproj">
+      <Project>{b71cefb7-2c4f-45af-b6e0-318ede11d08d}</Project>
+      <Name>Prism.Perspex.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prism.Perspex\Prism.Perspex.csproj">
+      <Project>{4f355315-1bd6-4408-a127-15c1278cd592}</Project>
+      <Name>Prism.Perspex</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

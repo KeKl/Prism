@@ -35,8 +35,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <Folder Include="Common\" />
-    <Folder Include="Logging\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationBase.cs" />
