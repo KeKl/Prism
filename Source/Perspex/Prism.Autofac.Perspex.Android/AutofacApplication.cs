@@ -75,11 +75,11 @@ namespace Prism.Autofac
             RegisterFrameworkExceptionTypes();
 
             Logger.Log(Resources.CreatingPage, Category.Debug, Priority.Low);
-            Page = CreatePage();
-            if (Page != null)
+            MainView = CreateMainView();
+            if (MainView != null)
             {
                 Logger.Log(Resources.InitializingPage, Category.Debug, Priority.Low);
-                InitializePage();
+                InitializeMainView();
             }
 
             Logger.Log(Resources.BootstrapperSequenceCompleted, Category.Debug, Priority.Low);
@@ -168,7 +168,7 @@ namespace Prism.Autofac
             if (Container != null && Container.IsRegistered<TFrom>())
             {
                 Logger.Log(
-                    String.Format(CultureInfo.CurrentCulture, Resources.TypeMappingAlreadyRegistered,
+                    string.Format(CultureInfo.CurrentCulture, Resources.TypeMappingAlreadyRegistered,
                         typeof(TFrom).Name),
                     Category.Debug, Priority.Low);
             }
@@ -196,15 +196,15 @@ namespace Prism.Autofac
         {
             if (fromType == null)
             {
-                throw new ArgumentNullException("fromType");
+                throw new ArgumentNullException(nameof(fromType));
             }
             if (toType == null)
             {
-                throw new ArgumentNullException("toType");
+                throw new ArgumentNullException(nameof(toType));
             }
             if (Container.IsRegistered(fromType))
             {
-                Logger.Log(String.Format(CultureInfo.CurrentCulture, Resources.TypeMappingAlreadyRegistered, fromType.Name),
+                Logger.Log(string.Format(CultureInfo.CurrentCulture, Resources.TypeMappingAlreadyRegistered, fromType.Name),
                     Category.Debug, Priority.Low);
             }
             else
@@ -234,11 +234,11 @@ namespace Prism.Autofac
         {
             if (instance == null)
             {
-                throw new ArgumentNullException("instance");
+                throw new ArgumentNullException(nameof(instance));
             }
             if (fromType == null)
             {
-                throw new ArgumentNullException("fromType");
+                throw new ArgumentNullException(nameof(fromType));
             }
 
             ContainerBuilder containerUpdater = CreateContainerBuilder();

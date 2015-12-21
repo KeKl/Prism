@@ -16,7 +16,7 @@ namespace Prism.Perspex.Desktop.Tests.Modularity
             Stream stream =
                 Assembly.GetExecutingAssembly().GetManifestResourceStream(
                     "Prism.Perspex.Desktop.Tests.Modularity.ModuleCatalogXaml.SimpleModuleCatalog.xaml");
-
+            
             var catalog = ModuleCatalog.CreateFromXaml(stream);
             Assert.IsNotNull(catalog);
 
@@ -26,8 +26,9 @@ namespace Prism.Perspex.Desktop.Tests.Modularity
         [Test]
         public void CanLoadCatalogFromXamlFromUri()
         {
-            var uri = new Uri("pack://application:,,,/Modularity/ModuleCatalogXaml/SimpleModuleCatalog.xaml");
-            
+            //var uri = new Uri("pack://application:,,,/Modularity/ModuleCatalogXaml/SimpleModuleCatalog.xaml", UriKind.Relative);
+            var uri = new Uri("/Prism.Perspex.Desktop.Tests;component/Modularity/ModuleCatalogXaml/SimpleModuleCatalog.xaml", UriKind.Relative);
+
             var catalog = ModuleCatalog.CreateFromXaml(uri);
             Assert.IsNotNull(catalog);
 

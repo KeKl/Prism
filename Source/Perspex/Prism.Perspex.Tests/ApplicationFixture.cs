@@ -1,6 +1,7 @@
 using System;
 using Microsoft.Practices.ServiceLocation;
 using NUnit.Framework;
+using OmniXaml.ObjectAssembler.Commands;
 using Prism.Logging;
 using Prism.Mvvm;
 using Prism.Perspex.Tests.Mocks.ViewModels;
@@ -9,34 +10,36 @@ using Prism.Perspex.Tests.Mocks.Views;
 namespace Prism.Perspex.Tests
 {
     [TestFixture]
-    public class BootstrapperFixture
+    public class ApplicationFixture
     {
-        [Test]
-        public void LoggerDefaultsToNull()
-        {
-            var bootstrapper = new DefaultApp();
-            Assert.Null(bootstrapper.BaseLogger);
-        }
+        private readonly object _lock = new object();
+        private readonly DefaultApp _app = new DefaultApp();
 
         [Test]
-        public void CreateLoggerInitializesLogger()
+        public void CreateLogger()
         {
-            var bootstrapper = new DefaultApp();
-            bootstrapper.CallCreateLogger();
+            var app = _app;
 
-            Assert.NotNull(bootstrapper.BaseLogger);
+            lock (_lock)
+            {
+                Assert.Null(_app.BaseLogger);
 
-            Assert.IsInstanceOf<DebugLogger>(bootstrapper.BaseLogger);
+                app.CallCreateLogger();
+
+                Assert.NotNull(app.BaseLogger);
+
+                Assert.IsInstanceOf<DebugLogger>(app.BaseLogger);
+            }
         }
 
         [Test]
         public void ConfigureViewModelLocatorShouldUserServiceLocatorAsResolver()
         {
-            var bootstrapper = new DefaultApp();
+            var app = _app;
 
             CreateAndConfigureServiceLocatorForViewModelLocator();
 
-            bootstrapper.CallConfigureViewModelLocator();
+            app.CallConfigureViewModelLocator();
 
             var view = new MockView();
 
@@ -76,6 +79,11 @@ namespace Prism.Perspex.Tests
         }
 
         public override void Run()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void ConfigureServiceLocator()
         {
             throw new NotImplementedException();
         }

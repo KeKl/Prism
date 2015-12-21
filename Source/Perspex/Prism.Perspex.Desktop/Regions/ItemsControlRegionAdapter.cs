@@ -1,8 +1,4 @@
-
-
 using System;
-using System.Windows.Controls;
-using System.Windows.Data;
 using Perspex.Controls;
 using Prism.Properties;
 
@@ -30,29 +26,20 @@ namespace Prism.Regions
         /// <param name="regionTarget">The object to adapt.</param>
         protected override void Adapt(IRegion region, ItemsControl regionTarget)
         {
-            if (region == null) throw new ArgumentNullException("region");
-            if (regionTarget == null) throw new ArgumentNullException("regionTarget");
-
-            bool itemsSourceIsSet = regionTarget.ItemsSource != null;
-            itemsSourceIsSet = itemsSourceIsSet || (BindingOperations.GetBinding(regionTarget, ItemsControl.ItemsSourceProperty) != null);
-
-            if (itemsSourceIsSet)
+            if (region == null) throw new ArgumentNullException(nameof(region));
+            if (regionTarget == null) throw new ArgumentNullException(nameof(regionTarget));
+            
+            if (regionTarget.Items == null)
             {
                 throw new InvalidOperationException(Resources.ItemsControlHasItemsSourceException);
             }
 
-            // If control has child items, move them to the region and then bind control to region. Can't set ItemsSource if child items exist.
-            if (regionTarget.Items.Count > 0)
+            foreach (object childItem in regionTarget.Items)
             {
-                foreach (object childItem in regionTarget.Items)
-                {
-                    region.Add(childItem);
-                }
-                // Control must be empty before setting ItemsSource
-                regionTarget.Items.Clear();
+                region.Add(childItem);
             }
 
-            regionTarget.ItemsSource = region.Views;
+            regionTarget.Items = region.Views;
         }
 
         /// <summary>

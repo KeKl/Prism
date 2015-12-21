@@ -284,7 +284,7 @@
     <Compile Include="Regions\IRegionNavigationService.cs" />
     <Compile Include="Regions\IRegionViewRegistry.cs" />
     <Compile Include="Regions\ItemMetadata.cs" />
-    <None Include="Regions\ItemsControlRegionAdapter.cs" />
+    <Compile Include="Regions\ItemsControlRegionAdapter.cs" />
     <Compile Include="Regions\IViewsCollection.cs" />
     <Compile Include="Regions\MetadataChangedEventArgs.cs" />
     <Compile Include="Regions\NavigationAsyncExtensions.cs" />

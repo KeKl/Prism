@@ -1,16 +1,14 @@
-
-
 using System;
 using System.Collections.Generic;
 using Microsoft.Practices.ServiceLocation;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
-namespace Prism.Wpf.Tests
+namespace Prism.Perspex.Desktop.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class ServiceLocatorExtensionsFixture
     {
-        [TestMethod]
+        [Test]
         public void TryResolveShouldReturnNullIfNotFound()
         {
             IServiceLocator sl = new MockServiceLocator(() => null);
@@ -20,7 +18,7 @@ namespace Prism.Wpf.Tests
             Assert.IsNull(value);
         }
 
-        [TestMethod]
+        [Test]
         public void ShouldResolveFoundtypes()
         {
             IServiceLocator sl = new MockServiceLocator(() => new ServiceLocatorExtensionsFixture());
@@ -30,7 +28,7 @@ namespace Prism.Wpf.Tests
             Assert.IsNotNull(value);
         }
 
-        [TestMethod]
+        [Test]
         public void GenericTryResolveShouldReturn()
         {
             IServiceLocator sl = new MockServiceLocator(() => new ServiceLocatorExtensionsFixture());

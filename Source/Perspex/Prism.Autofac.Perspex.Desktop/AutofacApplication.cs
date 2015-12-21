@@ -92,17 +92,17 @@ namespace Prism.Autofac
             RegisterFrameworkExceptionTypes();
 
             Logger.Log(Resources.CreatingShell, Category.Debug, Priority.Low);
-            Shell = CreateShell();
-            if (Shell != null)
+            MainView = CreateMainView();
+            if (MainView != null)
             {
                 Logger.Log(Resources.SettingTheRegionManager, Category.Debug, Priority.Low);
-                //RegionManager.SetRegionManager(Shell, Container.Resolve<IRegionManager>());
+                //RegionManager.SetRegionManager(MainView, Container.Resolve<IRegionManager>());
 
                 Logger.Log(Resources.UpdatingRegions, Category.Debug, Priority.Low);
                 //RegionManager.UpdateRegions();
 
                 Logger.Log(Resources.InitializingShell, Category.Debug, Priority.Low);
-                InitializeShell();
+                InitializeMainView();
             }
 
             if (Container.IsRegistered<IModuleManager>())

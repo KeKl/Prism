@@ -23,12 +23,6 @@ namespace Prism
         protected IModuleCatalog ModuleCatalog { get; set; }
 
         /// <summary>
-        /// Gets the shell user interface.
-        /// </summary>
-        /// <value>The shell user interface.</value>
-        protected IControl Shell { get; set; }
-
-        /// <summary>
         /// Runs the bootstrapper process.
         /// </summary>
         public override void Run()
@@ -55,21 +49,13 @@ namespace Prism
         }
 
         /// <summary>
-        /// Registers the <see cref="Type"/>s of the Exceptions that are not considered 
-        /// root exceptions by the <see cref="ExceptionExtensions"/>.
-        /// </summary>
-        protected virtual void RegisterFrameworkExceptionTypes()
-        {
-            ExceptionExtensions.RegisterFrameworkExceptionType(
-                typeof(ActivationException));
-        }
-
-        /// <summary>
         /// Initializes the modules. May be overwritten in a derived class to use a custom Modules Catalog
         /// </summary>
         protected virtual void InitializeModules()
         {
-            IModuleManager manager = ServiceLocator.Current.GetInstance<IModuleManager>();
+            IModuleManager manager = 
+                ServiceLocator.Current.GetInstance<IModuleManager>();
+
             manager.Run();
         }
 
@@ -138,16 +124,9 @@ namespace Prism
         /// in order to be able to add regions by using the <see cref="RegionManager.RegionNameProperty"/>
         /// attached property from XAML.
         /// </remarks>
-        protected virtual IControl CreateShell()
+        protected override IControl CreateMainView()
         {
             return null;
-        }
-
-        /// <summary>
-        /// Initializes the shell.
-        /// </summary>
-        protected virtual void InitializeShell()
-        {
         }
 
         /// <summary>
@@ -156,10 +135,5 @@ namespace Prism
         /// <param name="runWithDefaultConfiguration">If <see langword="true"/>, registers default 
         /// Prism Library services in the container. This is the default behavior.</param>
         public abstract void Run(bool runWithDefaultConfiguration);
-
-        /// <summary>
-        /// Configures the LocatorProvider for the <see cref="Microsoft.Practices.ServiceLocation.ServiceLocator" />.
-        /// </summary>
-        protected abstract void ConfigureServiceLocator();
     }
 }

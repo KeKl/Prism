@@ -45,7 +45,7 @@ namespace ModularityWithAutofac
         /// </remarks>
         protected override ILoggerFacade CreateLogger()
         {
-            // Because the Shell is displayed after most of the interesting boostrapper work has been performed,
+            // Because the MainView is displayed after most of the interesting boostrapper work has been performed,
             // this quickstart uses a special logger class to hold on to early log entries and display them 
             // after the UI is visible.
             return _logger;
@@ -107,7 +107,7 @@ namespace ModularityWithAutofac
         /// Creates the shell or main window of the application.
         /// </summary>
         /// <returns>The shell of the application.</returns>
-        protected override IControl CreateShell()
+        protected override IControl CreateMainView()
         {
             return ServiceLocator.Current.GetInstance<Shell>();
         }
@@ -118,11 +118,11 @@ namespace ModularityWithAutofac
         /// <remarks>
         /// The base implemention ensures the shell is composed in the container.
         /// </remarks>
-        protected override void InitializeShell()
+        protected override void InitializeMainView()
         {
-            base.InitializeShell();
+            base.InitializeMainView();
 
-            var window = (Window)this.Shell;
+            var window = (Window)this.MainView;
             window.Show();
 
             Application.Current.Run(window);

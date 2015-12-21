@@ -61,19 +61,19 @@ namespace HelloWorld
         /// Creates the shell.
         /// </summary>
         /// <returns></returns>
-        protected override IControl CreateShell()
+        protected override IControl CreateMainView()
         {
             return Container.Resolve<IControl>();
         }
 
         /// <summary>
-        /// Initializes the Shell.
+        /// Initializes the MainView.
         /// </summary>
-        protected override void InitializeShell()
+        protected override void InitializeMainView()
         {
-            base.InitializeShell();
+            base.InitializeMainView();
 
-            var window = (Window)this.Shell;
+            var window = (Window)this.MainView;
 
             window.Show();
 

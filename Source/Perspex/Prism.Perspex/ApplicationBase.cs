@@ -1,5 +1,7 @@
-﻿using Microsoft.Practices.ServiceLocation;
+﻿using System;
+using Microsoft.Practices.ServiceLocation;
 using Perspex;
+using Perspex.Controls;
 using Prism.Logging;
 using Prism.Mvvm;
 
@@ -19,7 +21,13 @@ namespace Prism
         /// </summary>
         /// <value>A <see cref="ILoggerFacade"/> instance.</value>
         protected ILoggerFacade Logger { get; set; }
-        
+
+        /// <summary>
+        /// Gets the main user interface.
+        /// </summary>
+        /// <value>The main user interface.</value>
+        protected IControl MainView { get; set; }
+
         /// <summary>
         /// Create the <see cref="ILoggerFacade" /> used by the bootstrapper.
         /// </summary>
@@ -36,12 +44,42 @@ namespace Prism
         /// </summary>
         protected virtual void ConfigureViewModelLocator()
         {
-            ViewModelLocationProvider.SetDefaultViewModelFactory((type) => ServiceLocator.Current.GetInstance(type));
+            ViewModelLocationProvider.SetDefaultViewModelFactory(
+                (type) => ServiceLocator.Current.GetInstance(type));
         }
 
         /// <summary>
         /// Runs the bootstrapper process.
         /// </summary>
         public abstract void Run();
+
+        /// <summary>
+        /// Creates the main view.
+        /// </summary>
+        /// <returns>The main view of the application.</returns>
+        protected virtual IControl CreateMainView() => null;
+      
+
+        /// <summary>
+        /// Initializes the main view.
+        /// </summary>
+        protected virtual void InitializeMainView()
+        {
+        }
+
+        /// <summary>
+        /// Registers the <see cref="System.Type"/>s of the Exceptions that are not considered 
+        /// root exceptions by the <see cref="ExceptionExtensions"/>.
+        /// </summary>
+        protected virtual void RegisterFrameworkExceptionTypes()
+        {
+            ExceptionExtensions.RegisterFrameworkExceptionType(
+                typeof(ActivationException));
+        }
+
+        /// <summary>
+        /// Configures the LocatorProvider for the <see cref="ServiceLocator" />.
+        /// </summary>
+        protected abstract void ConfigureServiceLocator();
     }
 }
