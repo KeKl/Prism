@@ -9,10 +9,10 @@ At the current time we have no plans to create new versions of the library for S
 
 |          | Status |
 | -------- | ------ |
-| Prism.Core | <img src="https://ci.appveyor.com/api/projects/status/pn4fcaghmlwueu52?svg=true"/> |
-| Prism.Wpf | <img src="https://ci.appveyor.com/api/projects/status/4lt3n2wf5m2efms7?svg=true" /> |
-| Prism.Windows | <img src="https://ci.appveyor.com/api/projects/status/j04r6a45fi2f9pv4?svg=true" /> |
-| Prism.Forms | <img src="https://ci.appveyor.com/api/projects/status/6ly53jgvwx62bm9u?svg=true" /> |
+| Prism.Core | <img src="https://ci.appveyor.com/api/projects/status/pn4fcaghmlwueu52/branch/master?svg=true"/> |
+| Prism.Wpf | <img src="https://ci.appveyor.com/api/projects/status/4lt3n2wf5m2efms7/branch/master?svg=true" /> |
+| Prism.Windows | <img src="https://ci.appveyor.com/api/projects/status/j04r6a45fi2f9pv4/branch/master?svg=true" /> |
+| Prism.Forms | <img src="https://ci.appveyor.com/api/projects/status/6ly53jgvwx62bm9u/branch/master?svg=true" /> |
 
 #NuGet Packages
 ### Core Packages
@@ -38,7 +38,7 @@ Following matrix shows the platform specific support currently available.
 | [Prism.Mef][6]        |  X  |     |     |
 | [Prism.Autofac][7]    |  X  |  X  |     |
 | [Prism.StructureMap][8]| X  |     |     |
-| [Prism.Ninject][9]    |  X  |     |     |
+| [Prism.Ninject][9]    |  X  |     |  X  |
 
 Note that adding the container-specific package to your project, will also pull in the correct platform-specific package and the core PCL library. E.g. when you'd like to use Unity in a WPF project, add the Prism.Unity package and the rest will be pulled in as well.
 
@@ -46,8 +46,11 @@ Note that adding the container-specific package to your project, will also pull 
 
 A detailed overview of each assembly per package is available [here](Documentation/DownloadandSetupPrism.md#overview-of-assemblies).
 
+# Prism Template Pack
+Get the latest snippets, item templates, and projects templates for dveloping WPF, UWP, and Xamarin.Forms applications with Prism from the [Visual Studio Gallery](https://visualstudiogallery.msdn.microsoft.com/e7b6bde2-ba59-43dd-9d14-58409940ffa0).
+
 # Samples
-We have both development (frequently changing) and stable samples for using Prism with WPF, UWP and Xamarin Forms. An overview of the samples can be found [here](Samples/README.md).
+We have both a development sandbox (frequently changing) and stable samples for using Prism with WPF, UWP and Xamarin Forms. An overview of the samples can be found [here](Sandbox/README.md).
 
 #Roadmap/Milestones
 You can check out our milestones for coming releases [here](https://github.com/PrismLibrary/Prism/milestones).
@@ -78,7 +81,9 @@ As part of taking over the code base from Microsoft and moving towards Prism 6, 
 - Visual State management parts of VisualStateAwarePage were removed and it is now renamed to SessionStateAwarePage. 
 
 #Prism for Xamarin.Forms Preview
-Check out the new Prism for Xamarin.Forms Preview: http://brianlagunas.com/first-look-at-the-prism-for-xamarin-forms-preview/
+Check out the new Prism for Xamarin.Forms Preview:
+* Prism.Forms 5.7.0 Preview - http://brianlagunas.com/first-look-at-the-prism-for-xamarin-forms-preview/
+* Prism.Forms 6.2.0 Preview - http://brianlagunas.com/prism-for-xamarin-forms-6-2-0-preview/
 
 ### .NET Foundation
 
