@@ -8,3 +8,5 @@ nuget pack Prism.Unity.nuspec -Prop Version=6.0.2-prerelease001 -Prop Notes="Sig
 nuget pack Prism.Ninject.nuspec -Prop Version=6.0.2-prerelease001 -Prop Notes="Signed assemblies"
 nuget pack Prism.Mef.nuspec -Prop Version=6.0.2-prerelease001 -Prop Notes="Signed assemblies"
 nuget pack Prism.StructureMap.nuspec -Prop Version=6.0.2-prerelease001 -Prop Notes="Signed assemblies"
+
+nuget pack Prism.Autofac.Perspex.Desktop.nuspec -Prop Version=6.0.2-prerelease001 -Prop Notes="Signed assemblies"

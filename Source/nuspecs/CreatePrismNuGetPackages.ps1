@@ -203,4 +203,23 @@ else
 
 
 
+###########################################
+#####  Prism.Autofac.Perspex.Desktop  #####
+###########################################
+$autofacPerspexDesktopNuspecPath = 'Prism.Autofac.Perspex.Desktop'
+$autofacPerspexDesktopAssemblyPath = '../Perspex/Prism.Autofac.Perspex.Desktop/bin/Release-Signed/Prism.Autofac.Perspex.Desktop.dll'
+if ((Test-Path $autofacPerspexDesktopAssemblyPath))
+{
+    $fileInfo = Get-Item $autofacPerspexDesktopAssemblyPath
+    $autofacPerspexDesktopFileVersion = $fileInfo.VersionInfo.ProductVersion
+
+    Invoke-Expression ".\$($nugetFileName) pack $($autofacPerspexDesktopNuspecPath) -Prop version=$($autofacPerspexDesktopFileVersion) -Prop coreVersion=$($coreFileVersion) -Prop releaseNotes=$($releaseNotesUri)"
+}
+else
+{
+    Write-Host 'Prism.Autofac.Perspex.Desktop not found'
+}
+
+
+
 Read-Host 'Press Enter to continue'
