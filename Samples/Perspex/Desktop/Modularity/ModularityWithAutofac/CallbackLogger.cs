@@ -9,24 +9,13 @@ namespace ModularityWithAutofac
     /// </summary>
     public class CallbackLogger : ILoggerFacade
     {
-        private Queue<Tuple<string, Category, Priority>> savedLogs = new Queue<Tuple<string, Category, Priority>>();
-        private Action<string, Category, Priority> callback;
+        private readonly Queue<Tuple<string, Category, Priority>> _savedLogs = new Queue<Tuple<string, Category, Priority>>();
 
         /// <summary>
         /// Gets or sets the callback to receive logs.
         /// </summary>
         /// <value>An Action&lt;string, Category, Priority&gt; callback.</value>
-        public Action<string, Category, Priority> Callback
-        {
-            get
-            {
-                return this.callback;
-            }
-            set
-            {
-                this.callback = value;
-            }
-        }
+        public Action<string, Category, Priority> Callback { get; set; }
 
         /// <summary>
         /// Write a new log entry with the specified category and priority.
@@ -37,16 +26,10 @@ namespace ModularityWithAutofac
         public void Log(string message, Category category, Priority priority)
         {
             if (this.Callback != null)
-            {
                 this.Callback(message, category, priority);
-
-            }
             else
-            {
-                savedLogs.Enqueue(new Tuple<string, Category, Priority>(message, category, priority));
-            }
+                _savedLogs.Enqueue(new Tuple<string, Category, Priority>(message, category, priority));
         }
-
 
         /// <summary>
         /// Replays the saved logs if the Callback has been set.
@@ -55,9 +38,9 @@ namespace ModularityWithAutofac
         {
             if (this.Callback != null)
             {
-                while (this.savedLogs.Count > 0)
+                while (this._savedLogs.Count > 0)
                 {
-                    var log = this.savedLogs.Dequeue();
+                    var log = this._savedLogs.Dequeue();
                     this.Callback(log.Item1, log.Item2, log.Item3);
                 }
             }

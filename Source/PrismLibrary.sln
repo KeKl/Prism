@@ -75,6 +75,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.Perspex.Tests", "Pers
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.Perspex.Autofac.Desktop.Tests", "Perspex\Prism.Perspex.Autofac.Desktop.Tests\Prism.Perspex.Autofac.Desktop.Tests.csproj", "{10B0168F-D7C4-4EDD-AD86-F10805F53275}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.Modularity", "Prism.Modularity\Prism.Modularity.csproj", "{9F367A6D-5C14-4849-87FA-942591DA7E7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -655,6 +657,30 @@ Global
 		{10B0168F-D7C4-4EDD-AD86-F10805F53275}.Release-Signed|x64.Build.0 = Release|Any CPU
 		{10B0168F-D7C4-4EDD-AD86-F10805F53275}.Release-Signed|x86.ActiveCfg = Release|Any CPU
 		{10B0168F-D7C4-4EDD-AD86-F10805F53275}.Release-Signed|x86.Build.0 = Release|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Debug|ARM.Build.0 = Debug|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Debug|x64.Build.0 = Debug|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Debug|x86.Build.0 = Debug|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Release|ARM.Build.0 = Release|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Release|x64.ActiveCfg = Release|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Release|x64.Build.0 = Release|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Release|x86.ActiveCfg = Release|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Release|x86.Build.0 = Release|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Release-Signed|Any CPU.ActiveCfg = Release|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Release-Signed|Any CPU.Build.0 = Release|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Release-Signed|ARM.ActiveCfg = Release|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Release-Signed|ARM.Build.0 = Release|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Release-Signed|x64.ActiveCfg = Release|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Release-Signed|x64.Build.0 = Release|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Release-Signed|x86.ActiveCfg = Release|Any CPU
+		{9F367A6D-5C14-4849-87FA-942591DA7E7E}.Release-Signed|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

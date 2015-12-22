@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using NUnit.Framework;
 using Prism.Modularity;
+using Newtonsoft.Json;
 
 namespace Prism.Perspex.Desktop.Tests.Modularity
 {

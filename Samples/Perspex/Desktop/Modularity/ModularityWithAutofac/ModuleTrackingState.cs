@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using Prism.Modularity;
+using Prism.Mvvm;
 
 namespace ModularityWithAutofac
 {
@@ -9,16 +10,16 @@ namespace ModularityWithAutofac
     /// <remarks>
     /// This class is for demonstration purposes for the quickstart and not expected to be used in a real world application.
     /// </remarks>
-    public class ModuleTrackingState : INotifyPropertyChanged
+    public class ModuleTrackingState : BindableBase
     {
-        private string moduleName;
-        private ModuleInitializationStatus moduleInitializationStatus;
-        private DiscoveryMethod expectedDiscoveryMethod;
-        private InitializationMode expectedInitializationMode;
-        private DownloadTiming expectedDownloadTiming;
-        private string configuredDependencies = "(none)";
-        private long bytesReceived;
-        private long totalBytesToReceive;
+        private string _moduleName;
+        private ModuleInitializationStatus _moduleInitializationStatus;
+        private DiscoveryMethod _expectedDiscoveryMethod;
+        private InitializationMode _expectedInitializationMode;
+        private DownloadTiming _expectedDownloadTiming;
+        private string _configuredDependencies = "(none)";
+        private long _bytesReceived;
+        private long _totalBytesToReceive;
 
         /// <summary>
         /// Gets or sets the name of the module.
@@ -29,15 +30,8 @@ namespace ModularityWithAutofac
         /// </remarks>
         public string ModuleName
         {
-            get { return this.moduleName; }
-            set
-            {
-                if (this.moduleName != value)
-                {
-                    this.moduleName = value;
-                    this.RaisePropertyChanged(PropertyNames.ModuleName);
-                }
-            }
+            get { return this._moduleName; }
+            set { SetProperty(ref _moduleName, value); }
         }
 
         /// <summary>
@@ -46,18 +40,9 @@ namespace ModularityWithAutofac
         /// <value>A ModuleInitializationStatus value.</value>
         public ModuleInitializationStatus ModuleInitializationStatus
         {
-            get
-            {
-                return this.moduleInitializationStatus;
-            }
-            set
-            {
-                if (this.moduleInitializationStatus != value)
-                {
-                    this.moduleInitializationStatus = value;
-                    this.RaisePropertyChanged(PropertyNames.ModuleInitializationStatus);
-                }
-            }
+            get { return this._moduleInitializationStatus; }
+            set { SetProperty(ref _moduleInitializationStatus, value); }
+           
         }
 
         /// <summary>
@@ -69,18 +54,8 @@ namespace ModularityWithAutofac
         /// </remarks>
         public DiscoveryMethod ExpectedDiscoveryMethod
         {
-            get
-            {
-                return this.expectedDiscoveryMethod;
-            }
-            set
-            {
-                if (this.expectedDiscoveryMethod != value)
-                {
-                    this.expectedDiscoveryMethod = value;
-                    this.RaisePropertyChanged(PropertyNames.ExpectedDiscoveryMethod);
-                }
-            }
+            get { return this._expectedDiscoveryMethod; }
+            set { SetProperty(ref _expectedDiscoveryMethod, value); }
         }
 
         /// <summary>
@@ -92,18 +67,8 @@ namespace ModularityWithAutofac
         /// </remarks>
         public InitializationMode ExpectedInitializationMode
         {
-            get
-            {
-                return this.expectedInitializationMode;
-            }
-            set
-            {
-                if (this.expectedInitializationMode != value)
-                {
-                    this.expectedInitializationMode = value;
-                    this.RaisePropertyChanged(PropertyNames.ExpectedInitializationMode);
-                }
-            }
+            get { return this._expectedInitializationMode; }
+            set { SetProperty(ref _expectedInitializationMode, value); }
         }
 
         /// <summary>
@@ -115,18 +80,8 @@ namespace ModularityWithAutofac
         /// </remarks>        
         public DownloadTiming ExpectedDownloadTiming
         {
-            get
-            {
-                return this.expectedDownloadTiming;
-            }
-            set
-            {
-                if (this.expectedDownloadTiming != value)
-                {
-                    this.expectedDownloadTiming = value;
-                    this.RaisePropertyChanged(PropertyNames.ExpectedDownloadTiming);
-                }
-            }
+            get { return this._expectedDownloadTiming; }
+            set { SetProperty(ref _expectedDownloadTiming, value); }
         }
 
         /// <summary>
@@ -138,21 +93,9 @@ namespace ModularityWithAutofac
         /// </remarks>
         public string ConfiguredDependencies
         {
-            get
-            {
-                return this.configuredDependencies;
-            }
-            set
-            {
-
-                if (this.configuredDependencies != value)
-                {
-                    this.configuredDependencies = value;
-                    this.RaisePropertyChanged(PropertyNames.ConfiguredDependencies);
-                }
-            }
+            get { return this._configuredDependencies; }
+            set { SetProperty(ref _configuredDependencies, value); }
         }
-
 
         /// <summary>
         /// Gets or sets the number of bytes received as the module is loaded.
@@ -160,22 +103,13 @@ namespace ModularityWithAutofac
         /// <value>A number of bytes.</value>
         public long BytesReceived
         {
-            get
-            {
-                return this.bytesReceived;
-            }
+            get { return this._bytesReceived; }
             set
             {
-
-                if (this.bytesReceived != value)
-                {
-                    this.bytesReceived = value;
-                    this.RaisePropertyChanged(PropertyNames.BytesReceived);
-                    this.RaisePropertyChanged(PropertyNames.DownloadProgressPercentage);
-                }
+                SetProperty(ref _bytesReceived, value);
+                OnPropertyChanged(nameof(DownloadProgressPercentage));
             }
         }
-
 
         /// <summary>
         /// Gets or sets the total bytes to receive to load the module.
@@ -183,19 +117,11 @@ namespace ModularityWithAutofac
         /// <value>A number of bytes.</value>
         public long TotalBytesToReceive
         {
-            get
-            {
-                return this.totalBytesToReceive;
-            }
+            get { return this._totalBytesToReceive; }
             set
             {
-
-                if (this.totalBytesToReceive != value)
-                {
-                    this.totalBytesToReceive = value;
-                    this.RaisePropertyChanged(PropertyNames.TotalBytesToReceive);
-                    this.RaisePropertyChanged(PropertyNames.DownloadProgressPercentage);
-                }
+                SetProperty(ref _totalBytesToReceive, value);
+                OnPropertyChanged(nameof(DownloadProgressPercentage));
             }
         }
 
@@ -207,44 +133,11 @@ namespace ModularityWithAutofac
         {
             get
             {
-                if (this.bytesReceived < this.totalBytesToReceive)
-                {
-                    return (int)(this.bytesReceived * 100.0 / this.totalBytesToReceive);
-                }
+                if (this._bytesReceived < this._totalBytesToReceive)
+                    return (int)(this._bytesReceived * 100.0 / this._totalBytesToReceive);
                 else
-                {
                     return 100;
-                }
             }
-        }
-
-        /// <summary>
-        /// Raised when a property value changes.
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void RaisePropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        /// <summary>
-        /// Property names used with INotifyPropertyChanged.
-        /// </summary>
-        public static class PropertyNames
-        {
-            public const string ModuleName = "ModuleName";
-            public const string ModuleInitializationStatus = "ModuleInitializationStatus";
-            public const string ExpectedDiscoveryMethod = "ExpectedDiscoveryMethod";
-            public const string ExpectedInitializationMode = "ExpectedInitializationMode";
-            public const string ExpectedDownloadTiming = "ExpectedDownloadTiming";
-            public const string ConfiguredDependencies = "ConfiguredDependencies";
-            public const string BytesReceived = "BytesReceived";
-            public const string TotalBytesToReceive = "TotalBytesToReceive";
-            public const string DownloadProgressPercentage = "DownloadProgressPercentage";
         }
     }
 }

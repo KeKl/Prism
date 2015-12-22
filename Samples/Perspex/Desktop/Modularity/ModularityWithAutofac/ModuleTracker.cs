@@ -16,13 +16,6 @@ namespace ModularityWithAutofac
     /// </remarks>    
     public class ModuleTracker : IModuleTracker
     {
-        private readonly ModuleTrackingState moduleATrackingState;
-        private readonly ModuleTrackingState moduleBTrackingState;
-        private readonly ModuleTrackingState moduleCTrackingState;
-        private readonly ModuleTrackingState moduleDTrackingState;
-        private readonly ModuleTrackingState moduleETrackingState;
-        private readonly ModuleTrackingState moduleFTrackingState;
-
         private ILoggerFacade logger;
 
         /// <summary>
@@ -32,12 +25,12 @@ namespace ModularityWithAutofac
         {
             if (logger == null)
             {
-                throw new ArgumentNullException("logger");
+                throw new ArgumentNullException(nameof(logger));
             }
             this.logger = logger;
 
             // These states are defined specifically for the desktop version of the quickstart.
-            this.moduleATrackingState = new ModuleTrackingState
+            this.ModuleATrackingState = new ModuleTrackingState
             {
                 ModuleName = WellKnownModuleNames.ModuleA,
                 ExpectedDiscoveryMethod = DiscoveryMethod.ApplicationReference,
@@ -46,35 +39,35 @@ namespace ModularityWithAutofac
                 ConfiguredDependencies = WellKnownModuleNames.ModuleD,
             };
 
-            this.moduleBTrackingState = new ModuleTrackingState
+            this.ModuleBTrackingState = new ModuleTrackingState
             {
                 ModuleName = WellKnownModuleNames.ModuleB,
                 ExpectedDiscoveryMethod = DiscoveryMethod.DirectorySweep,
                 ExpectedInitializationMode = InitializationMode.OnDemand,
                 ExpectedDownloadTiming = DownloadTiming.InBackground,
             };
-            this.moduleCTrackingState = new ModuleTrackingState
+            this.ModuleCTrackingState = new ModuleTrackingState
             {
                 ModuleName = WellKnownModuleNames.ModuleC,
                 ExpectedDiscoveryMethod = DiscoveryMethod.ApplicationReference,
                 ExpectedInitializationMode = InitializationMode.OnDemand,
                 ExpectedDownloadTiming = DownloadTiming.WithApplication,
             };
-            this.moduleDTrackingState = new ModuleTrackingState
+            this.ModuleDTrackingState = new ModuleTrackingState
             {
                 ModuleName = WellKnownModuleNames.ModuleD,
                 ExpectedDiscoveryMethod = DiscoveryMethod.DirectorySweep,
                 ExpectedInitializationMode = InitializationMode.WhenAvailable,
                 ExpectedDownloadTiming = DownloadTiming.InBackground,
             };
-            this.moduleETrackingState = new ModuleTrackingState
+            this.ModuleETrackingState = new ModuleTrackingState
             {
                 ModuleName = WellKnownModuleNames.ModuleE,
                 ExpectedDiscoveryMethod = DiscoveryMethod.ConfigurationManifest,
                 ExpectedInitializationMode = InitializationMode.OnDemand,
                 ExpectedDownloadTiming = DownloadTiming.InBackground,
             };
-            this.moduleFTrackingState = new ModuleTrackingState
+            this.ModuleFTrackingState = new ModuleTrackingState
             {
                 ModuleName = WellKnownModuleNames.ModuleF,
                 ExpectedDiscoveryMethod = DiscoveryMethod.ConfigurationManifest,
@@ -91,10 +84,7 @@ namespace ModularityWithAutofac
         /// <remarks>
         /// This is exposed as a specific property for data-binding purposes in the quickstart UI.
         /// </remarks>
-        public ModuleTrackingState ModuleATrackingState
-        {
-            get { return this.moduleATrackingState; }
-        }
+        public ModuleTrackingState ModuleATrackingState { get; }
 
         /// <summary>
         /// Gets the tracking state of module B.
@@ -103,10 +93,7 @@ namespace ModularityWithAutofac
         /// <remarks>
         /// This is exposed as a specific property for data-binding purposes in the quickstart UI.
         /// </remarks>
-        public ModuleTrackingState ModuleBTrackingState
-        {
-            get { return this.moduleBTrackingState; }
-        }
+        public ModuleTrackingState ModuleBTrackingState { get; }
 
         /// <summary>
         /// Gets the tracking state of module C.
@@ -115,10 +102,7 @@ namespace ModularityWithAutofac
         /// <remarks>
         /// This is exposed as a specific property for data-binding purposes in the quickstart UI.
         /// </remarks>
-        public ModuleTrackingState ModuleCTrackingState
-        {
-            get { return this.moduleCTrackingState; }
-        }
+        public ModuleTrackingState ModuleCTrackingState { get; }
 
         /// <summary>
         /// Gets the tracking state of module D.
@@ -127,10 +111,7 @@ namespace ModularityWithAutofac
         /// <remarks>
         /// This is exposed as a specific property for data-binding purposes in the quickstart UI.
         /// </remarks>
-        public ModuleTrackingState ModuleDTrackingState
-        {
-            get { return this.moduleDTrackingState; }
-        }
+        public ModuleTrackingState ModuleDTrackingState { get; }
 
         /// <summary>
         /// Gets the tracking state of module E.
@@ -139,10 +120,7 @@ namespace ModularityWithAutofac
         /// <remarks>
         /// This is exposed as a specific property for data-binding purposes in the quickstart UI.
         /// </remarks>
-        public ModuleTrackingState ModuleETrackingState
-        {
-            get { return this.moduleETrackingState; }
-        }
+        public ModuleTrackingState ModuleETrackingState { get; }
 
         /// <summary>
         /// Gets the tracking state of module F.
@@ -151,10 +129,7 @@ namespace ModularityWithAutofac
         /// <remarks>
         /// This is exposed as a specific property for data-binding purposes in the quickstart UI.
         /// </remarks>
-        public ModuleTrackingState ModuleFTrackingState
-        {
-            get { return this.moduleFTrackingState; }
-        }
+        public ModuleTrackingState ModuleFTrackingState { get; }
 
         /// <summary>
         /// Records the module is loading.

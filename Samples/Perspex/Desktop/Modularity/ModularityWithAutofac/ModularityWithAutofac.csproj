@@ -90,6 +90,10 @@
       <Project>{4f355315-1bd6-4408-a127-15c1278cd592}</Project>
       <Name>Prism.Perspex</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\Source\Prism.Modularity\Prism.Modularity.csproj">
+      <Project>{9f367a6d-5c14-4849-87fa-942591da7e7e}</Project>
+      <Name>Prism.Modularity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\Source\Prism\Prism.csproj">
       <Project>{e6c50355-d01e-4caa-884d-d7929861315c}</Project>
       <Name>Prism</Name>

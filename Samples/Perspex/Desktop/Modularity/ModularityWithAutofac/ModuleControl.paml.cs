@@ -5,7 +5,7 @@ namespace ModularityWithAutofac
 {
     public class ModuleControl : UserControl
     {
-        private ModuleTrackingState moduleTrackingState;
+        private ModuleTrackingState _moduleTrackingState;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ModuleControl"/> class.

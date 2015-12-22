@@ -11,30 +11,30 @@ namespace ModularityWithAutofac
 {
     public class Shell : Window
     {
-        private IModuleTracker moduleTracker;
-        private IModuleManager moduleManager;
-        private CallbackLogger logger;
+        private readonly IModuleTracker _moduleTracker;
+        private readonly IModuleManager _moduleManager;
+        private readonly CallbackLogger _logger;
 
         public Shell(IModuleManager moduleManager, IModuleTracker moduleTracker, CallbackLogger logger)
         {
             if (moduleManager == null)
             {
-                throw new ArgumentNullException("moduleManager");
+                throw new ArgumentNullException(nameof(moduleManager));
             }
 
             if (moduleTracker == null)
             {
-                throw new ArgumentNullException("moduleTracker");
+                throw new ArgumentNullException(nameof(moduleTracker));
             }
 
             if (logger == null)
             {
-                throw new ArgumentNullException("logger");
+                throw new ArgumentNullException(nameof(logger));
             }
 
-            this.moduleManager = moduleManager;
-            this.moduleTracker = moduleTracker;
-            this.logger = logger;
+            this._moduleManager = moduleManager;
+            this._moduleTracker = moduleTracker;
+            this._logger = logger;
 
             this.InitializeComponent();
         }
@@ -63,7 +63,7 @@ namespace ModularityWithAutofac
         private void ModuleB_RequestModuleLoad(object sender, EventArgs e)
         {
             // The ModuleManager uses the Async Events Pattern.
-            this.moduleManager.LoadModule(WellKnownModuleNames.ModuleB);
+            this._moduleManager.LoadModule(WellKnownModuleNames.ModuleB);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace ModularityWithAutofac
         private void ModuleC_RequestModuleLoad(object sender, EventArgs e)
         {
             // The ModuleManager uses the Async Events Pattern.
-            this.moduleManager.LoadModule(WellKnownModuleNames.ModuleC);
+            this._moduleManager.LoadModule(WellKnownModuleNames.ModuleC);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace ModularityWithAutofac
         private void ModuleE_RequestModuleLoad(object sender, EventArgs e)
         {
             // The ModuleManager uses the Async Events Pattern.
-            this.moduleManager.LoadModule(WellKnownModuleNames.ModuleE);
+            this._moduleManager.LoadModule(WellKnownModuleNames.ModuleE);
         }
 
         /// <summary>
@@ -96,23 +96,23 @@ namespace ModularityWithAutofac
         private void ModuleF_RequestModuleLoad(object sender, EventArgs e)
         {
             // The ModuleManager uses the Async Events Pattern.
-            this.moduleManager.LoadModule(WellKnownModuleNames.ModuleF);
+            this._moduleManager.LoadModule(WellKnownModuleNames.ModuleF);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // I use the IModuleTracker as the data-context for data-binding.
             // This quickstart only demonstrates modularity for Prism and does not use data-binding patterns such as MVVM.
-            this.DataContext = this.moduleTracker;
+            this.DataContext = this._moduleTracker;
 
             // I set this shell's Log method as the callback for receiving log messages.
-            this.logger.Callback = this.Log;
-            this.logger.ReplaySavedLogs();
+            this._logger.Callback = this.Log;
+            this._logger.ReplaySavedLogs();
 
             // I subscribe to events to help track module loading/loaded progress.
             // The ModuleManager uses the Async Events Pattern.
-            this.moduleManager.LoadModuleCompleted += this.ModuleManager_LoadModuleCompleted;
-            this.moduleManager.ModuleDownloadProgressChanged += this.ModuleManager_ModuleDownloadProgressChanged;
+            this._moduleManager.LoadModuleCompleted += this.ModuleManager_LoadModuleCompleted;
+            this._moduleManager.ModuleDownloadProgressChanged += this.ModuleManager_ModuleDownloadProgressChanged;
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace ModularityWithAutofac
         /// <param name="e">The <see cref="Prism.Modularity.LoadModuleProgressChangedEventArgs"/> instance containing the event data.</param>
         void ModuleManager_ModuleDownloadProgressChanged(object sender, ModuleDownloadProgressChangedEventArgs e)
         {
-            this.moduleTracker.RecordModuleDownloading(e.ModuleInfo.ModuleName, e.BytesReceived, e.TotalBytesToReceive);
+            this._moduleTracker.RecordModuleDownloading(e.ModuleInfo.ModuleName, e.BytesReceived, e.TotalBytesToReceive);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace ModularityWithAutofac
         /// <param name="e">The <see cref="Prism.Modularity.LoadModuleCompletedEventArgs"/> instance containing the event data.</param>
         void ModuleManager_LoadModuleCompleted(object sender, LoadModuleCompletedEventArgs e)
         {
-            this.moduleTracker.RecordModuleLoaded(e.ModuleInfo.ModuleName);
+            this._moduleTracker.RecordModuleLoaded(e.ModuleInfo.ModuleName);
         }
     }
 }

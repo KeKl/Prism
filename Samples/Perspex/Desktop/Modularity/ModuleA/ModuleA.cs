@@ -7,8 +7,8 @@ namespace ModuleA
 {
     public class ModuleA : IModule
     {
-        private readonly ILoggerFacade logger;
-        private readonly IModuleTracker moduleTracker;
+        private readonly ILoggerFacade _logger;
+        private readonly IModuleTracker _moduleTracker;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ModuleA"/> class.
@@ -19,17 +19,17 @@ namespace ModuleA
         {
             if (logger == null)
             {
-                throw new ArgumentNullException("logger");
+                throw new ArgumentNullException(nameof(logger));
             }
 
             if (moduleTracker == null)
             {
-                throw new ArgumentNullException("moduleTracker");
+                throw new ArgumentNullException(nameof(moduleTracker));
             }
 
-            this.logger = logger;
-            this.moduleTracker = moduleTracker;
-            this.moduleTracker.RecordModuleConstructed(WellKnownModuleNames.ModuleA);
+            this._logger = logger;
+            this._moduleTracker = moduleTracker;
+            this._moduleTracker.RecordModuleConstructed(WellKnownModuleNames.ModuleA);
         }
 
         /// <summary>
@@ -37,8 +37,8 @@ namespace ModuleA
         /// </summary>
         public void Initialize()
         {
-            this.logger.Log("ModuleA demonstrates logging during Initialize().", Category.Info, Priority.Medium);
-            this.moduleTracker.RecordModuleInitialized(WellKnownModuleNames.ModuleA);
+            this._logger.Log("ModuleA demonstrates logging during Initialize().", Category.Info, Priority.Medium);
+            this._moduleTracker.RecordModuleInitialized(WellKnownModuleNames.ModuleA);
         }
     }
 }

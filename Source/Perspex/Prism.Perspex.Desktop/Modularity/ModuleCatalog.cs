@@ -115,6 +115,23 @@ namespace Prism.Modularity
         }
 
         /// <summary>
+        /// Creates a <see cref="ModuleCatalog"/> from Json.
+        /// </summary>
+        /// <param name="jsonStream"><see cref="Stream"/> that contains the Json declaration of the catalog.</param>
+        /// <returns>An instance of <see cref="ModuleCatalog"/> built from the Json.</returns>
+        public static ModuleCatalog CreateFromJson(Stream jsonStream)
+        {
+            if (jsonStream == null)
+            {
+                throw new ArgumentNullException(nameof(jsonStream));
+            }
+
+            throw new NotImplementedException();
+
+            //return XamlReader.Load(xamlStream) as ModuleCatalog;
+        }
+
+        /// <summary>
         /// Creates a <see cref="ModuleCatalog"/> from XAML.
         /// </summary>
         /// <param name="xamlStream"><see cref="Stream"/> that contains the XAML declaration of the catalog.</param>

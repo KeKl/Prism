@@ -1,7 +1,7 @@
 ﻿<UserControl xmlns="https://github.com/perspex">
   
   <!-- This control binds against ModuleTrackingState -->
-  <Grid x:Name="LayoutRoot" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+  <Grid Name="LayoutRoot" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
     <Border HorizontalAlignment="Center" VerticalAlignment="Center">
       <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.RowDefinitions>
@@ -13,11 +13,13 @@
                    Text="{Binding ModuleName, FallbackValue=Unknown}"
                    TextAlignment="Center"
                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        
         <!-- This will show up if module is loadable on demand -->
         <TextBlock x:Name="ClickToLoadTextBlock"
                    TextWrapping="Wrap" TextAlignment="Center"
                    HorizontalAlignment="Center" VerticalAlignment="Center"
                    Text="(Click to load)" Grid.Row="1" Foreground="#FFDE8310" Visibility="Collapsed" FontSize="9.667"/>
+        
         <!-- This will show up while the module is loading -->
         <Grid Grid.Row="2" x:Name="LoadProgressPanel" >
           <Grid.RowDefinitions>
@@ -32,9 +34,11 @@
             <TextBlock Text="%" FontSize="9.667"/>
           </StackPanel>
         </Grid>
+        
       </Grid>
     </Border>
   </Grid>
+  
   <!-- This tooltip helps users see additional information about the module -->
   <ToolTipService.ToolTip >
     <Grid>

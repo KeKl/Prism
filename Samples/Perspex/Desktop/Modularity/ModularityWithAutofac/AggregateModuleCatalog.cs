@@ -11,24 +11,21 @@ namespace ModularityWithAutofac
     /// </summary>
     public class AggregateModuleCatalog : IModuleCatalog
     {
-        private List<IModuleCatalog> catalogs = new List<IModuleCatalog>();
+        private readonly List<IModuleCatalog> _catalogs = new List<IModuleCatalog>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AggregateModuleCatalog"/> class.
         /// </summary>
         public AggregateModuleCatalog()
         {
-            this.catalogs.Add(new ModuleCatalog());
+            this._catalogs.Add(new ModuleCatalog());
         }
 
         /// <summary>
         /// Gets the collection of catalogs.
         /// </summary>
         /// <value>A read-only collection of catalogs.</value>
-        public ReadOnlyCollection<IModuleCatalog> Catalogs
-        {
-            get { return this.catalogs.AsReadOnly(); }
-        }
+        public ReadOnlyCollection<IModuleCatalog> Catalogs => this._catalogs.AsReadOnly();
 
         /// <summary>
         /// Adds the catalog to the list of catalogs
@@ -38,10 +35,10 @@ namespace ModularityWithAutofac
         {
             if (catalog == null)
             {
-                throw new ArgumentNullException("catalog");
+                throw new ArgumentNullException(nameof(catalog));
             }
 
-            this.catalogs.Add(catalog);
+            this._catalogs.Add(catalog);
         }
 
 
@@ -63,7 +60,7 @@ namespace ModularityWithAutofac
         /// </returns>
         public IEnumerable<ModuleInfo> GetDependentModules(ModuleInfo moduleInfo)
         {
-            var catalog = this.catalogs.Single(x => x.Modules.Contains(moduleInfo));
+            var catalog = this._catalogs.Single(x => x.Modules.Contains(moduleInfo));
             return catalog.GetDependentModules(moduleInfo);
         }
 
@@ -80,7 +77,7 @@ namespace ModularityWithAutofac
         {
             var modulesGroupedByCatalog =
                 modules.GroupBy<ModuleInfo, IModuleCatalog>(
-                    module => this.catalogs.Single(catalog => catalog.Modules.Contains(module)));
+                    module => this._catalogs.Single(catalog => catalog.Modules.Contains(module)));
             return modulesGroupedByCatalog.SelectMany(x => x.Key.CompleteListWithDependencies(x));
         }
 
@@ -101,7 +98,7 @@ namespace ModularityWithAutofac
         /// <param name="moduleInfo">The <see cref="ModuleInfo"/> to add.</param>
         public void AddModule(ModuleInfo moduleInfo)
         {
-            this.catalogs[0].AddModule(moduleInfo);
+            this._catalogs[0].AddModule(moduleInfo);
         }
     }
 }

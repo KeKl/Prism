@@ -1,5 +1,5 @@
 ﻿<Window xmlns="https://github.com/perspex"
-        xmlns:local="clr-namespace:ModularityWithAutofac.Views;assembly=ModularityWithAutofac"
+        xmlns:local="clr-namespace:ModularityWithAutofac;assembly=ModularityWithAutofac"
         Title="Modularity with Autofac QuickStart - Desktop" 
         Width="640" Height="600">
   
@@ -15,6 +15,7 @@
       <ColumnDefinition Width="Auto"/>
       <ColumnDefinition/>
     </Grid.ColumnDefinitions>
+    
     <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" FontSize="24" Text="Modularity with Unity QuickStart - Desktop" Margin="5"/>
     <Border BorderBrush="#FF99A8B6" BorderThickness="2" CornerRadius="2" HorizontalAlignment="Left" Width="230" Grid.RowSpan="2" Grid.Row="1">
       <Border.Background>
@@ -29,15 +30,60 @@
         The window below shows the logging trace from the Bootstrapper class.
       </TextBlock>
     </Border>
+    
     <Canvas Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Height="300" >
-      <local:ModuleControl VerticalAlignment="Top" DataContext="{Binding ModuleATrackingState}" Height="100" Width="100" Canvas.Top="22" Style="{StaticResource ModuleControlStyle-Simple}" AutomationProperties.AutomationId="ModuleAAutomationId"/>
-      <local:ModuleControl VerticalAlignment="Top" DataContext="{Binding ModuleBTrackingState}" Height="100" Width="100" Canvas.Top="22" Canvas.Left="122" RequestModuleLoad="ModuleB_RequestModuleLoad" Style="{StaticResource ModuleControlStyle-Simple}" AutomationProperties.AutomationId="ModuleBAutomationId"/>
-      <local:ModuleControl VerticalAlignment="Top" DataContext="{Binding ModuleCTrackingState}" Height="100" Width="100" Canvas.Top="22" RequestModuleLoad="ModuleC_RequestModuleLoad" Canvas.Left="257" Style="{StaticResource ModuleControlStyle-Simple}" AutomationProperties.AutomationId="ModuleCAutomationId"/>
-      <local:ModuleControl VerticalAlignment="Top" DataContext="{Binding ModuleDTrackingState}" Height="100" Width="100" Canvas.Top="160" Style="{StaticResource ModuleControlStyle-Simple}" AutomationProperties.AutomationId="ModuleDAutomationId"/>
-      <local:ModuleControl VerticalAlignment="Top" DataContext="{Binding ModuleETrackingState}" Height="100" Width="100" Canvas.Top="160" RequestModuleLoad="ModuleE_RequestModuleLoad" Canvas.Left="122" Style="{StaticResource ModuleControlStyle-Simple}" AutomationProperties.AutomationId="ModuleEAutomationId"/>
-      <local:ModuleControl VerticalAlignment="Top" DataContext="{Binding ModuleFTrackingState}" Height="100" Width="100" Canvas.Top="160" RequestModuleLoad="ModuleF_RequestModuleLoad" Canvas.Left="257" Style="{StaticResource ModuleControlStyle-Simple}" AutomationProperties.AutomationId="ModuleFAutomationId"/>
-      <Path Data="M467,141 L467,197.0357" Stretch="Fill" StrokeEndLineCap="Triangle" Stroke="#FF99A8B6" StrokeThickness="20" Canvas.Top="126" UseLayoutRounding="False" StrokeStartLineCap="Square" Height="30" Canvas.Left="40" />
-      <Path Data="M467,141 L467,197.0357" Stretch="Fill" StrokeEndLineCap="Triangle" Stroke="#FF99A8B6" StrokeThickness="20" Canvas.Top="194" UseLayoutRounding="False" StrokeStartLineCap="Square" Height="30" Canvas.Left="229"  RenderTransformOrigin="0.5,0.5">
+      
+      <local:ModuleControl VerticalAlignment="Top" 
+                           DataContext="{Binding ModuleATrackingState}" 
+                           Height="100" Width="100" Canvas.Top="22" 
+                           Style="{StaticResource ModuleControlStyle-Simple}" 
+                           AutomationProperties.AutomationId="ModuleAAutomationId"/>
+      
+      <local:ModuleControl VerticalAlignment="Top" 
+                           DataContext="{Binding ModuleBTrackingState}" 
+                           Height="100" Width="100" Canvas.Top="22" Canvas.Left="122" 
+                           RequestModuleLoad="ModuleB_RequestModuleLoad" 
+                           Style="{StaticResource ModuleControlStyle-Simple}" 
+                           AutomationProperties.AutomationId="ModuleBAutomationId"/>
+      
+      <local:ModuleControl VerticalAlignment="Top" 
+                           DataContext="{Binding ModuleCTrackingState}" 
+                           Height="100" Width="100" Canvas.Top="22" Canvas.Left="257"
+                           RequestModuleLoad="ModuleC_RequestModuleLoad"  
+                           Style="{StaticResource ModuleControlStyle-Simple}" 
+                           AutomationProperties.AutomationId="ModuleCAutomationId"/>
+      
+      <local:ModuleControl VerticalAlignment="Top" 
+                           DataContext="{Binding ModuleDTrackingState}" 
+                           Height="100" Width="100" Canvas.Top="160" 
+                           Style="{StaticResource ModuleControlStyle-Simple}" 
+                           AutomationProperties.AutomationId="ModuleDAutomationId"/>
+      
+      <local:ModuleControl VerticalAlignment="Top" 
+                           DataContext="{Binding ModuleETrackingState}" 
+                           Height="100" Width="100" Canvas.Top="160" Canvas.Left="122"
+                           RequestModuleLoad="ModuleE_RequestModuleLoad"  
+                           Style="{StaticResource ModuleControlStyle-Simple}" 
+                           AutomationProperties.AutomationId="ModuleEAutomationId"/>
+      
+      <local:ModuleControl VerticalAlignment="Top" 
+                           DataContext="{Binding ModuleFTrackingState}" 
+                           Height="100" Width="100" Canvas.Top="160" Canvas.Left="257"
+                           RequestModuleLoad="ModuleF_RequestModuleLoad"  
+                           Style="{StaticResource ModuleControlStyle-Simple}" 
+                           AutomationProperties.AutomationId="ModuleFAutomationId"/>
+      
+      <Path Data="M467,141 L467,197.0357" 
+            Stretch="Fill" 
+            StrokeEndLineCap="Triangle" Stroke="#FF99A8B6" StrokeThickness="20" StrokeStartLineCap="Square"
+            Height="30" Canvas.Top="126" Canvas.Left="40" UseLayoutRounding="False" />
+      
+      <Path Data="M467,141 L467,197.0357" 
+            Stretch="Fill" 
+            StrokeEndLineCap="Triangle" Stroke="#FF99A8B6" StrokeThickness="20" StrokeStartLineCap="Square"
+            Height="30" Canvas.Top="194" Canvas.Left="229" 
+            UseLayoutRounding="False" 
+            RenderTransformOrigin="0.5,0.5">
         <Path.RenderTransform>
           <TransformGroup>
             <ScaleTransform/>
@@ -47,7 +93,17 @@
           </TransformGroup>run
         </Path.RenderTransform>
       </Path>
+      
     </Canvas>
-    <TextBox x:Name="TraceTextBox" Grid.ColumnSpan="2" Margin="10,0,10,10" TextWrapping="Wrap" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" Grid.Row="2" MinHeight="200"/>
+    
+    <TextBox Name="TraceTextBox" 
+             Grid.ColumnSpan="2" Grid.Row="2"
+             Margin="10,0,10,10" 
+             TextWrapping="Wrap" 
+             VerticalAlignment="Stretch" 
+             VerticalScrollBarVisibility="Visible" 
+             AcceptsReturn="True" 
+             MinHeight="200" />
+    
   </Grid>
 </Window>
