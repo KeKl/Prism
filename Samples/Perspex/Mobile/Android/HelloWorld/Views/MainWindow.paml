@@ -1,0 +1,22 @@
+﻿<Window xmlns="https://github.com/perspex"
+        xmlns:local="clr-namespace:HelloWorld.Views;assembly=HelloWorld"
+        xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Perspex"
+        prism:ViewModelLocator.AutoWireViewModel="true">
+
+
+  <DockPanel LastChildFill="true">
+
+    <Menu DockPanel.Dock="Top">
+      <MenuItem Header="File">
+        <MenuItem Header="New Window" />
+        <Separator />
+        <MenuItem Header="Exit" Command="{Binding ExitCommand}" />
+      </MenuItem>
+    </Menu>
+
+    <TextBox DockPanel.Dock="Top" Height="250" FontSize="25" Text="{Binding TestText}" />
+
+    <Button DockPanel.Dock="Bottom" Height="25" Content="ChangeText" Command="{Binding ChangeTextCommand}" />
+    
+  </DockPanel>
+</Window>
