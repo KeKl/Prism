@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections.Specialized;
+using Perspex.Controls;
 using Prism.Common;
 
 namespace Prism.Regions.Behaviors
@@ -89,10 +90,10 @@ namespace Prism.Regions.Behaviors
                 return lifetimeAttribute;
             }
 
-            var frameworkElement = inactiveView as System.Windows.FrameworkElement;
-            if (frameworkElement != null && frameworkElement.DataContext != null)
+            var control = inactiveView as IControl;
+            if (control != null && control.DataContext != null)
             {
-                var dataContext = frameworkElement.DataContext;
+                var dataContext = control.DataContext;
                 var contextLifetimeAttribute =
                     GetCustomAttributes<RegionMemberLifetimeAttribute>(dataContext.GetType()).FirstOrDefault();
                 return contextLifetimeAttribute;

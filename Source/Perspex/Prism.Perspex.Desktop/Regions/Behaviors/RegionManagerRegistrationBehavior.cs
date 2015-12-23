@@ -1,10 +1,9 @@
-
-
 using System;
 using System.ComponentModel;
 using System.Windows;
 using Prism.Properties;
 using System.Globalization;
+using Perspex;
 
 namespace Prism.Regions.Behaviors
 {
@@ -21,7 +20,7 @@ namespace Prism.Regions.Behaviors
         public static readonly string BehaviorKey = "RegionManagerRegistration";
 
         private WeakReference attachedRegionManagerWeakReference;
-        private DependencyObject hostControl;
+        private PerspexObject hostControl;
 
         /// <summary>
         /// Initializes a new instance of <see cref="RegionManagerRegistrationBehavior"/>.
@@ -37,12 +36,12 @@ namespace Prism.Regions.Behaviors
         public IRegionManagerAccessor RegionManagerAccessor { get; set; }
 
         /// <summary>
-        /// Gets or sets the <see cref="DependencyObject"/> that the <see cref="IRegion"/> is attached to.
+        /// Gets or sets the <see cref="PerspexObject"/> that the <see cref="IRegion"/> is attached to.
         /// </summary>
-        /// <value>A <see cref="DependencyObject"/> that the <see cref="IRegion"/> is attached to.
-        /// This is usually a <see cref="FrameworkElement"/> that is part of the tree.</value>
+        /// <value>A <see cref="PerspexObject"/> that the <see cref="IRegion"/> is attached to.
+        /// This is usually a <see cref="IControl"/> that is part of the tree.</value>
         /// <exception cref="InvalidOperationException">When this member is set after the <see cref="IRegionBehavior.Attach"/> method has being called.</exception>
-        public DependencyObject HostControl
+        public PerspexObject HostControl
         {
             get
             {
@@ -91,7 +90,7 @@ namespace Prism.Regions.Behaviors
 
         private void TryRegisterRegion()
         {
-            DependencyObject targetElement = this.HostControl;
+            PerspexObject targetElement = this.HostControl;
             if (targetElement.CheckAccess())
             {
                 IRegionManager regionManager = this.FindRegionManager(targetElement);
@@ -127,7 +126,7 @@ namespace Prism.Regions.Behaviors
             this.TryRegisterRegion();
         }
 
-        private IRegionManager FindRegionManager(DependencyObject dependencyObject)
+        private IRegionManager FindRegionManager(PerspexObject dependencyObject)
         {
             var regionmanager = this.RegionManagerAccessor.GetRegionManager(dependencyObject);
             if (regionmanager != null)
@@ -135,12 +134,14 @@ namespace Prism.Regions.Behaviors
                 return regionmanager;
             }
 
-            DependencyObject parent = null;
-            parent = LogicalTreeHelper.GetParent(dependencyObject);
-            if (parent != null)
-            {
-                return this.FindRegionManager(parent);
-            }
+            PerspexObject parent = null;
+
+            throw new NotImplementedException();
+            //parent = LogicalTreeHelper.GetParent(dependencyObject);
+            //if (parent != null)
+            //{
+            //    return this.FindRegionManager(parent);
+            //}
 
             return null;
         }

@@ -18,7 +18,7 @@ namespace Prism.Regions
     public static class RegionContext
     {
         private static readonly PerspexProperty<ObservableObject<object>> ObservableRegionContextProperty =
-            PerspexProperty.RegisterAttached<IControl, ObservableObject<object>>("ObservableRegionContext", typeof(RegionContext));
+            PerspexProperty.RegisterAttached<PerspexObject, ObservableObject<object>>("ObservableRegionContext", typeof(RegionContext));
         
         /// <summary>
         /// Returns an <see cref="ObservableObject{T}"/> wrapper around the RegionContext value. The RegionContext
@@ -33,7 +33,7 @@ namespace Prism.Regions
         /// <returns>Wrapper around the Regioncontext value. </returns>
         public static ObservableObject<object> GetObservableContext(PerspexObject view)
         {
-            if (view == null) throw new ArgumentNullException("view");
+            if (view == null) throw new ArgumentNullException(nameof(view));
 
             ObservableObject<object> context = view.GetValue(ObservableRegionContextProperty);
 

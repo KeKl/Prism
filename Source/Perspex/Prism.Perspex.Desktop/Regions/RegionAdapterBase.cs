@@ -3,6 +3,7 @@
 using System;
 using System.Globalization;
 using System.Windows;
+using Perspex;
 using Perspex.Controls;
 using Prism.Properties;
 using Prism.Regions.Behaviors;
@@ -81,7 +82,7 @@ namespace Prism.Regions
             IRegionBehaviorFactory behaviorFactory = this.RegionBehaviorFactory;
             if (behaviorFactory != null)
             {
-                IControl dependencyObjectRegionTarget = regionTarget as IControl;
+                var dependencyObjectRegionTarget = regionTarget as PerspexObject;
 
                 foreach (string behaviorKey in behaviorFactory)
                 {
@@ -145,7 +146,7 @@ namespace Prism.Regions
 
         private static void SetObservableRegionOnHostingControl(IRegion region, T regionTarget)
         {
-            IControl targetElement = regionTarget as IControl;
+            var targetElement = regionTarget as PerspexObject;
 
             if (targetElement != null)
             {

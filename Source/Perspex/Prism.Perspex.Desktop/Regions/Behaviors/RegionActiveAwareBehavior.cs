@@ -5,6 +5,8 @@ using System.Collections.Specialized;
 using System.Windows;
 using System.Linq;
 using System.Reflection;
+using Perspex;
+using Perspex.Controls;
 using Prism.Common;
 
 namespace Prism.Regions.Behaviors
@@ -83,7 +85,7 @@ namespace Prism.Regions.Behaviors
 
         private void InvokeOnSynchronizedActiveAwareChildren(object item, Action<IActiveAware> invocation)
         {
-            var dependencyObjectView = item as DependencyObject;
+            var dependencyObjectView = item as PerspexObject;
 
             if (dependencyObjectView != null)
             {
@@ -113,7 +115,7 @@ namespace Prism.Regions.Behaviors
                 return true;
             }
 
-            var viewAsFrameworkElement = view as FrameworkElement;
+            var viewAsFrameworkElement = view as IControl;
 
             if (viewAsFrameworkElement != null)
             {

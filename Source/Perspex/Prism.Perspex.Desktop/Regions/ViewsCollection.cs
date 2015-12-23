@@ -135,7 +135,7 @@ namespace Prism.Regions
             }
         }
 
-        private Dictionary<ItemMetadata, IDisposable> _disposables = new Dictionary<ItemMetadata, IDisposable>();
+        private readonly Dictionary<ItemMetadata, IDisposable> _disposables = new Dictionary<ItemMetadata, IDisposable>();
 
         /// <summary>
         /// Removes all monitored items from our monitoring list.

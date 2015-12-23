@@ -3,6 +3,7 @@
 using System.Windows;
 using Prism.Regions;
 using System;
+using Perspex;
 
 namespace Prism.Regions.Behaviors
 {
@@ -24,19 +25,19 @@ namespace Prism.Regions.Behaviors
         /// <summary>
         /// This attached property can be defined on a view to indicate that regions defined in it must be removed from the region manager when the parent view gets removed from a region.
         /// </summary>
-        public static readonly DependencyProperty ClearChildViewsProperty =
-            DependencyProperty.RegisterAttached("ClearChildViews", typeof(bool), typeof(ClearChildViewsRegionBehavior), new PropertyMetadata(false));
+        public static readonly PerspexProperty<bool> ClearChildViewsProperty =
+            PerspexProperty.RegisterAttached<PerspexObject, bool>("ClearChildViews", typeof(ClearChildViewsRegionBehavior));
 
         /// <summary>
         /// Gets the ClearChildViews attached property from a DependencyObject.
         /// </summary>
         /// <param name="target">The object from which to get the value.</param>
         /// <returns>The value of the ClearChildViews attached property in the target specified.</returns>
-        public static bool GetClearChildViews(DependencyObject target)
+        public static bool GetClearChildViews(PerspexObject target)
         {
             if (target == null)
             {
-                throw new ArgumentNullException("target");
+                throw new ArgumentNullException(nameof(target));
             }
 
             return (bool)target.GetValue(ClearChildViewsRegionBehavior.ClearChildViewsProperty);
@@ -47,11 +48,11 @@ namespace Prism.Regions.Behaviors
         /// </summary>
         /// <param name="target">The object in which to set the value.</param>
         /// <param name="value">The value of to set in the target object's ClearChildViews attached property.</param>
-        public static void SetClearChildViews(DependencyObject target, bool value)
+        public static void SetClearChildViews(PerspexObject target, bool value)
         {
             if (target == null)
             {
-                throw new ArgumentNullException("target");
+                throw new ArgumentNullException(nameof(target));
             }
 
             target.SetValue(ClearChildViewsRegionBehavior.ClearChildViewsProperty, value);
@@ -69,7 +70,7 @@ namespace Prism.Regions.Behaviors
         {
             foreach (var view in region.Views)
             {
-                DependencyObject dependencyObject = view as DependencyObject;
+                var dependencyObject = view as PerspexObject;
                 if (dependencyObject != null)
                 {
                     if (GetClearChildViews(dependencyObject))

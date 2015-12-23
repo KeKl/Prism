@@ -1,5 +1,3 @@
-
-
 using System;
 using System.Globalization;
 
@@ -31,7 +29,7 @@ namespace Prism.Regions
         {
             if (this.Uri != null)
             {
-                return string.Format(CultureInfo.CurrentCulture, "RegionNavigationJournalEntry:'{0}'", this.Uri.ToString());
+                return string.Format(CultureInfo.CurrentCulture, "RegionNavigationJournalEntry:'{0}'", this.Uri);
             }
 
             return base.ToString();

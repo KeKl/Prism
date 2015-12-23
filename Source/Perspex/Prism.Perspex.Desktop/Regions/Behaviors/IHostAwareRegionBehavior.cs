@@ -17,6 +17,6 @@ namespace Prism.Regions.Behaviors
         /// </summary>
         /// <value>A <see cref="IControl"/> that the <see cref="IRegion"/> is attached to.
         /// This is usually a <see cref="Control"/> that is part of the tree.</value>
-        IControl HostControl { get; set; }
+        PerspexObject HostControl { get; set; }
     }
 }

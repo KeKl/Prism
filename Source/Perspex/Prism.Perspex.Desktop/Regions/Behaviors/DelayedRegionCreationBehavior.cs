@@ -103,7 +103,7 @@ namespace Prism.Regions.Behaviors
 
                 if (!this.regionCreated)
                 {
-                    string regionName = this.RegionManagerAccessor.GetRegionName((IControl)targetElement);
+                    string regionName = this.RegionManagerAccessor.GetRegionName(targetElement);
                     CreateRegion(targetElement, regionName);
                     this.regionCreated = true;
                 }

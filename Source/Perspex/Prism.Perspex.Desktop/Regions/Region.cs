@@ -9,6 +9,7 @@ using System.Linq;
 using System.Windows;
 using Prism.Properties;
 using Microsoft.Practices.ServiceLocation;
+using Perspex;
 using Perspex.Controls;
 
 namespace Prism.Regions
@@ -273,10 +274,10 @@ namespace Prism.Regions
 
             this.ItemMetadataCollection.Remove(itemMetadata);
 
-            IControl dependencyObject = view as IControl;
-            if (dependencyObject != null && Regions.RegionManager.GetRegionManager(dependencyObject) == this.RegionManager)
+            var perspexObject = view as PerspexObject;
+            if (perspexObject != null && Regions.RegionManager.GetRegionManager(perspexObject) == this.RegionManager)
             {
-                dependencyObject.ClearValue(Regions.RegionManager.RegionManagerProperty);
+                perspexObject.ClearValue(Regions.RegionManager.RegionManagerProperty);
             }
         }
 
@@ -368,11 +369,11 @@ namespace Prism.Regions
                 itemMetadata.Name = viewName;
             }
 
-            IControl dependencyObject = view as IControl;
+            var perspexObject = view as PerspexObject;
 
-            if (dependencyObject != null)
+            if (perspexObject != null)
             {
-                Regions.RegionManager.SetRegionManager(dependencyObject, scopedRegionManager);
+                Regions.RegionManager.SetRegionManager(perspexObject, scopedRegionManager);
             }
 
             this.ItemMetadataCollection.Add(itemMetadata);
@@ -382,13 +383,13 @@ namespace Prism.Regions
         {
             if (view == null)
             {
-                throw new ArgumentNullException("view");
+                throw new ArgumentNullException(nameof(view));
             }
 
             ItemMetadata itemMetadata = this.ItemMetadataCollection.FirstOrDefault(x => x.Item == view);
             if (itemMetadata == null)
             {
-                throw new ArgumentException(Resources.ViewNotInRegionException, "view");
+                throw new ArgumentException(Resources.ViewNotInRegionException, nameof(view));
             }
 
             return itemMetadata;

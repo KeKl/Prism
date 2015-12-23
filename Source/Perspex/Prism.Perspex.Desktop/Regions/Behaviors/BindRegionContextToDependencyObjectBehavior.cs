@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows;
+using Perspex;
 
 namespace Prism.Regions.Behaviors
 {
@@ -39,7 +40,7 @@ namespace Prism.Regions.Behaviors
         {
             foreach (var view in views)
             {
-                DependencyObject dependencyObjectView = view as DependencyObject;
+                var dependencyObjectView = view as PerspexObject;
                 if (dependencyObjectView != null)
                 {
                     ObservableObject<object> contextWrapper = RegionContext.GetObservableContext(dependencyObjectView);
@@ -52,7 +53,7 @@ namespace Prism.Regions.Behaviors
         {
             foreach (var view in views)
             {
-                var dependencyObject = view as DependencyObject;
+                var dependencyObject = view as PerspexObject;
                 if (dependencyObject != null)
                 {
                     ObservableObject<object> viewRegionContext = RegionContext.GetObservableContext(dependencyObject);
@@ -61,11 +62,16 @@ namespace Prism.Regions.Behaviors
             }
         }
 
+        private void ViewRegionContext_PropertyChanged(object sender, PerspexPropertyChangedEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
         private void DetachNotifyChangeEvent(IEnumerable views)
         {
             foreach (var view in views)
             {
-                var dependencyObject = view as DependencyObject;
+                var dependencyObject = view as PerspexObject;
                 if (dependencyObject != null)
                 {
                     ObservableObject<object> viewRegionContext = RegionContext.GetObservableContext(dependencyObject);
@@ -74,9 +80,9 @@ namespace Prism.Regions.Behaviors
             }
         }
 
-        private void ViewRegionContext_OnPropertyChangedEvent(object sender, PropertyChangedEventArgs args)
+        private void ViewRegionContext_OnPropertyChangedEvent(object sender, PerspexPropertyChangedEventArgs args)
         {
-            if (args.PropertyName == "Value")
+            if (args.Property.Name == "Value")
             {
                 var context = (ObservableObject<object>) sender;
                 this.Region.Context = context.Value;

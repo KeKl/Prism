@@ -1,14 +1,7 @@
-
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Prism.Regions
 {
     /// <summary>
-    /// Provides journaling of current, back, and forward navigation within regions.
+    /// Provides journalling of current, back, and forward navigation within regions.
     /// </summary>
     public interface IRegionNavigationJournal
     {

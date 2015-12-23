@@ -17,11 +17,18 @@ namespace Prism.Regions
         public PerspexObject Sender { get; private set; }
 
         /// <summary>
+        /// The property that changed.
+        /// </summary>
+        public PerspexProperty Property { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:Perspex.PerspexPropertyChangedEventArgs"/> class.
         /// </summary>
         /// <param name="sender">The object that the property changed on.</param>
-        public MetadataChangedEventArgs(PerspexObject sender)
+        /// <param name="property">The property that changed on.</param>
+        public MetadataChangedEventArgs(PerspexObject sender, PerspexProperty property)
         {
+            Property = property;
             Sender = sender;
         }
     }

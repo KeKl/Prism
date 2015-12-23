@@ -106,6 +106,18 @@ namespace Prism.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ContentControl&apos;s Content property is not empty. 
+        ///    This control is being associated with a region, but the control is already bound to something else. 
+        ///    If you did not explicitly set the control&apos;s Content property, 
+        ///    this exception may be caused by a change in the value of the inherited RegionManager attached property..
+        /// </summary>
+        internal static string ContentControlHasContentException {
+            get {
+                return ResourceManager.GetString("ContentControlHasContentException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deactivation is not possible in this type of region..
         /// </summary>
         internal static string DeactiveNotPossibleException {
@@ -138,6 +150,15 @@ namespace Prism.Properties {
         internal static string DuplicatedModule {
             get {
                 return ResourceManager.GetString("DuplicatedModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The HostControl property cannot be set after Attach method has been called..
+        /// </summary>
+        internal static string HostControlCannotBeSetAfterAttach {
+            get {
+                return ResourceManager.GetString("HostControlCannotBeSetAfterAttach", resourceCulture);
             }
         }
         

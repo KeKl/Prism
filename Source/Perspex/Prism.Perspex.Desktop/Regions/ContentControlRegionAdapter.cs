@@ -28,9 +28,11 @@ namespace Prism.Regions
         /// <param name="regionTarget">The object to adapt.</param>
         protected override void Adapt(IRegion region, ContentControl regionTarget)
         {
-            if (regionTarget == null) throw new ArgumentNullException("regionTarget");
+            if (regionTarget == null) throw new ArgumentNullException(nameof(regionTarget));
             bool contentIsSet = regionTarget.Content != null;
-            contentIsSet = contentIsSet || (BindingOperations.GetBinding(regionTarget, ContentControl.ContentProperty) != null);
+            
+            // TODO this is different to the original implementation
+            //contentIsSet = contentIsSet || (BindingOperations.GetBinding(regionTarget, ContentControl.ContentProperty) != null);
 
             if (contentIsSet)
             {

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Perspex.Controls;
 using Prism.Properties;
 
@@ -28,16 +29,22 @@ namespace Prism.Regions
         {
             if (region == null) throw new ArgumentNullException(nameof(region));
             if (regionTarget == null) throw new ArgumentNullException(nameof(regionTarget));
-            
-            if (regionTarget.Items == null)
+
+            bool itemsSourceIsSet = regionTarget.Items != null;
+            // TODO this is different to the original implementation
+            //itemsSourceIsSet = itemsSourceIsSet || (BindingOperations.GetBinding(regionTarget, ItemsControl.ItemsSourceProperty) != null);
+
+            if (itemsSourceIsSet)
             {
                 throw new InvalidOperationException(Resources.ItemsControlHasItemsSourceException);
             }
-
-            foreach (object childItem in regionTarget.Items)
+            
+            foreach (var childItem in regionTarget.Items)
             {
                 region.Add(childItem);
             }
+
+            // TODO remove items from target?
 
             regionTarget.Items = region.Views;
         }

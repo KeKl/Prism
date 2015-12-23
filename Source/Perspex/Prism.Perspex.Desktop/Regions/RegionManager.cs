@@ -50,13 +50,13 @@ namespace Prism.Regions
         /// in the <see cref="IRegionManager"/> with the specified region name.
         /// </remarks>
         public static readonly PerspexProperty<string> RegionNameProperty = 
-            PerspexProperty.RegisterAttached<IControl, string>("RegionName", typeof(RegionManager));
+            PerspexProperty.RegisterAttached<PerspexObject, string>("RegionName", typeof(RegionManager));
 
         private static void OnSetRegionNameCallback(PerspexObject element, PerspexPropertyChangedEventArgs args)
         {
-            if (!IsInDesignMode((IControl)element))
+            if (!IsInDesignMode(element))
             {
-                CreateRegion((IControl)element);
+                CreateRegion(element);
             }
         }
 
@@ -65,9 +65,9 @@ namespace Prism.Regions
         /// </summary>
         /// <param name="regionTarget">The object to adapt. This is typically a container (i.e a control).</param>
         /// <param name="regionName">The name of the region to register.</param>
-        public static void SetRegionName(IControl regionTarget, string regionName)
+        public static void SetRegionName(PerspexObject regionTarget, string regionName)
         {
-            if (regionTarget == null) throw new ArgumentNullException("regionTarget");
+            if (regionTarget == null) throw new ArgumentNullException(nameof(regionTarget));
             regionTarget.SetValue(RegionNameProperty, regionName);
         }
 
@@ -77,14 +77,14 @@ namespace Prism.Regions
         /// <param name="regionTarget">The object to adapt. This is typically a container (i.e a control).</param>
         /// <returns>The name of the region that should be created when 
         /// <see cref="RegionManagerProperty"/> is also set in this element.</returns>
-        public static string GetRegionName(IControl regionTarget)
+        public static string GetRegionName(PerspexObject regionTarget)
         {
-            if (regionTarget == null) throw new ArgumentNullException("regionTarget");
-            return regionTarget.GetValue(RegionNameProperty) as string;
+            if (regionTarget == null) throw new ArgumentNullException(nameof(regionTarget));
+            return regionTarget.GetValue(RegionNameProperty);
         }
 
         private static readonly PerspexProperty<ObservableObject<IRegion>> ObservableRegionProperty =
-            PerspexProperty.RegisterAttached<IControl, ObservableObject<IRegion>>("ObservableRegion", typeof(RegionManager));
+            PerspexProperty.RegisterAttached<PerspexObject, ObservableObject<IRegion>>("ObservableRegion", typeof(RegionManager));
         
         /// <summary>
         /// Returns an <see cref="ObservableObject{T}"/> wrapper that can hold an <see cref="IRegion"/>. Using this wrapper
@@ -96,9 +96,9 @@ namespace Prism.Regions
         /// </summary>
         /// <param name="view">The view that will host the region. </param>
         /// <returns>Wrapper that can hold an <see cref="IRegion"/> value and can notify when the <see cref="IRegion"/> value changes. </returns>
-        public static ObservableObject<IRegion> GetObservableRegion(IControl view)
+        public static ObservableObject<IRegion> GetObservableRegion(PerspexObject view)
         {
-            if (view == null) throw new ArgumentNullException("view");
+            if (view == null) throw new ArgumentNullException(nameof(view));
 
             ObservableObject<IRegion> regionWrapper = view.GetValue(ObservableRegionProperty);
 
@@ -111,11 +111,11 @@ namespace Prism.Regions
             return regionWrapper;
         }
 
-        private static void CreateRegion(IControl element)
+        private static void CreateRegion(PerspexObject element)
         {
             IServiceLocator locator = ServiceLocator.Current;
             DelayedRegionCreationBehavior regionCreationBehavior = locator.GetInstance<DelayedRegionCreationBehavior>();
-            regionCreationBehavior.TargetElement = (PerspexObject)element;
+            regionCreationBehavior.TargetElement = element;
             regionCreationBehavior.Attach();
         }
 
@@ -138,9 +138,9 @@ namespace Prism.Regions
         /// </summary>
         /// <param name="target">The target element.</param>
         /// <returns>The <see cref="IRegionManager"/> attached to the <paramref name="target"/> element.</returns>
-        public static IRegionManager GetRegionManager(IControl target)
+        public static IRegionManager GetRegionManager(PerspexObject target)
         {
-            if (target == null) throw new ArgumentNullException("target");
+            if (target == null) throw new ArgumentNullException(nameof(target));
             return target.GetValue(RegionManagerProperty);
         }
 
@@ -149,9 +149,9 @@ namespace Prism.Regions
         /// </summary>
         /// <param name="target">The target element.</param>
         /// <param name="value">The value.</param>
-        public static void SetRegionManager(IControl target, IRegionManager value)
+        public static void SetRegionManager(PerspexObject target, IRegionManager value)
         {
-            if (target == null) throw new ArgumentNullException("target");
+            if (target == null) throw new ArgumentNullException(nameof(target));
             target.SetValue(RegionManagerProperty, value);
         }
 
@@ -174,9 +174,9 @@ namespace Prism.Regions
         /// </summary>
         /// <param name="target">The target element.</param>
         /// <returns>The region context to pass to the contained views.</returns>
-        public static object GetRegionContext(IControl target)
+        public static object GetRegionContext(PerspexObject target)
         {
-            if (target == null) throw new ArgumentNullException("target");
+            if (target == null) throw new ArgumentNullException(nameof(target));
             return target.GetValue(RegionContextProperty);
         }
 
@@ -185,10 +185,10 @@ namespace Prism.Regions
         /// </summary>
         /// <param name="target">The target element.</param>
         /// <param name="value">The value.</param>
-        public static void SetRegionContext(IControl target, object value)
+        public static void SetRegionContext(PerspexObject target, object value)
         {
-            //if (target == null) throw new ArgumentNullException("target");
-            //target.SetValue(RegionContextProperty, value);
+            if (target == null) throw new ArgumentNullException(nameof(target));
+            target.SetValue(RegionContextProperty, value);
         }
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace Prism.Regions
             }
         }
 
-        private static bool IsInDesignMode(IControl element)
+        private static bool IsInDesignMode(PerspexObject element)
         {
             throw new NotImplementedException();
             //return DesignerProperties.GetIsInDesignMode(element);

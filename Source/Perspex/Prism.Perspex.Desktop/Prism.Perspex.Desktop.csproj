@@ -207,19 +207,19 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Regions\AllActiveRegion.cs" />
-    <None Include="Regions\Behaviors\AutoPopulateRegionBehavior.cs" />
-    <None Include="Regions\Behaviors\BindRegionContextToDependencyObjectBehavior.cs" />
-    <None Include="Regions\Behaviors\ClearChildViewsRegionBehavior.cs" />
+    <Compile Include="Regions\Behaviors\AutoPopulateRegionBehavior.cs" />
+    <Compile Include="Regions\Behaviors\BindRegionContextToDependencyObjectBehavior.cs" />
+    <Compile Include="Regions\Behaviors\ClearChildViewsRegionBehavior.cs" />
     <Compile Include="Regions\Behaviors\DelayedRegionCreationBehavior.cs" />
     <Compile Include="Regions\Behaviors\IHostAwareRegionBehavior.cs" />
-    <None Include="Regions\Behaviors\RegionActiveAwareBehavior.cs" />
+    <Compile Include="Regions\Behaviors\RegionActiveAwareBehavior.cs" />
     <Compile Include="Regions\Behaviors\RegionCreationException.cs" />
     <Compile Include="Regions\Behaviors\RegionCreationException.Desktop.cs" />
-    <None Include="Regions\Behaviors\RegionManagerRegistrationBehavior.cs" />
-    <None Include="Regions\Behaviors\RegionMemberLifetimeBehavior.cs" />
-    <None Include="Regions\Behaviors\SelectorItemsSourceSyncBehavior.cs" />
-    <None Include="Regions\Behaviors\SyncRegionContextWithHostBehavior.cs" />
-    <None Include="Regions\ContentControlRegionAdapter.cs" />
+    <Compile Include="Regions\Behaviors\RegionManagerRegistrationBehavior.cs" />
+    <Compile Include="Regions\Behaviors\RegionMemberLifetimeBehavior.cs" />
+    <Compile Include="Regions\Behaviors\SelectingItemsSourceSyncBehavior.cs" />
+    <Compile Include="Regions\Behaviors\SyncRegionContextWithHostBehavior.cs" />
+    <Compile Include="Regions\ContentControlRegionAdapter.cs" />
     <Compile Include="Regions\DefaultRegionManagerAccessor.cs" />
     <Compile Include="Regions\IConfirmNavigationRequest.cs" />
     <Compile Include="Regions\INavigateAsync.cs" />
@@ -259,10 +259,10 @@
     <Compile Include="Regions\RegionNavigationEventArgs.cs" />
     <Compile Include="Regions\RegionNavigationFailedEventArgs.cs" />
     <Compile Include="Regions\RegionNavigationJournal.cs" />
-    <None Include="Regions\RegionNavigationJournalEntry.cs" />
+    <Compile Include="Regions\RegionNavigationJournalEntry.cs" />
     <Compile Include="Regions\RegionNavigationService.cs" />
     <Compile Include="Regions\RegionViewRegistry.cs" />
-    <None Include="Regions\SelectorRegionAdapter.cs" />
+    <Compile Include="Regions\SelectingRegionAdapter.cs" />
     <Compile Include="Regions\SingleActiveRegion.cs" />
     <Compile Include="Regions\SyncActiveStateAttribute.cs" />
     <Compile Include="Regions\UpdateRegionsException.cs" />
