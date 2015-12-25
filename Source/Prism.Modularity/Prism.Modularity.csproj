@@ -58,52 +58,144 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyResolver.Desktop.cs" />
-    <Compile Include="Common\ListDictionary.cs" />
-    <Compile Include="ConfigurationStore.Desktop.cs" />
-    <Compile Include="CyclicDependencyFoundException.cs" />
-    <Compile Include="CyclicDependencyFoundException.Desktop.cs" />
-    <Compile Include="DuplicateModuleException.cs" />
-    <Compile Include="DuplicateModuleException.Desktop.cs" />
-    <Compile Include="Extensions\CollectionExtensions.cs" />
-    <Compile Include="FileModuleTypeLoader.Desktop.cs" />
-    <Compile Include="IAssemblyResolver.Desktop.cs" />
-    <Compile Include="IConfigurationStore.Desktop.cs" />
-    <Compile Include="IModule.cs" />
-    <Compile Include="IModuleCatalog.cs" />
-    <Compile Include="IModuleCatalogItem.cs" />
-    <Compile Include="IModuleInitializer.cs" />
-    <Compile Include="IModuleManager.cs" />
-    <Compile Include="IModuleTypeLoader.cs" />
-    <Compile Include="InitializationMode.cs" />
-    <Compile Include="LoadModuleCompletedEventArgs.cs" />
-    <Compile Include="ModularityException.cs" />
-    <Compile Include="ModularityException.Desktop.cs" />
-    <Compile Include="ModuleAttribute.Desktop.cs" />
-    <Compile Include="ModuleConfigurationElement.Desktop.cs" />
-    <Compile Include="ModuleConfigurationElementCollection.Desktop.cs" />
-    <Compile Include="ModuleDependencyAttribute.Desktop.cs" />
-    <Compile Include="ModuleDependencyCollection.Desktop.cs" />
-    <Compile Include="ModuleDependencyConfigurationElement.Desktop.cs" />
-    <Compile Include="ModuleDependencySolver.cs" />
-    <Compile Include="ModuleDownloadProgressChangedEventArgs.cs" />
-    <Compile Include="ModuleInfo.cs" />
-    <Compile Include="ModuleInfo.Desktop.cs" />
-    <Compile Include="ModuleInfoGroup.cs" />
-    <Compile Include="ModuleInfoGroupExtensions.cs" />
-    <Compile Include="ModuleInitializeException.cs" />
-    <Compile Include="ModuleInitializeException.Desktop.cs" />
-    <Compile Include="ModuleInitializer.cs" />
-    <Compile Include="ModuleManager.cs" />
-    <Compile Include="ModuleManager.Desktop.cs" />
-    <Compile Include="ModuleNotFoundException.cs" />
-    <Compile Include="ModuleNotFoundException.Desktop.cs" />
-    <Compile Include="ModulesConfigurationSection.Desktop.cs" />
-    <Compile Include="ModuleState.cs" />
-    <Compile Include="ModuleTypeLoaderNotFoundException.cs" />
-    <Compile Include="ModuleTypeLoaderNotFoundException.Desktop.cs" />
-    <Compile Include="ModuleTypeLoadingException.cs" />
-    <Compile Include="ModuleTypeLoadingException.Desktop.cs" />
+    <Compile Include="..\Wpf\Prism.Wpf\Common\ListDictionary.cs">
+      <Link>Common\ListDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Extensions\CollectionExtensions.cs">
+      <Link>Extensions\CollectionExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\AssemblyResolver.Desktop.cs">
+      <Link>AssemblyResolver.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ConfigurationStore.Desktop.cs">
+      <Link>ConfigurationStore.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\CyclicDependencyFoundException.cs">
+      <Link>CyclicDependencyFoundException.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\CyclicDependencyFoundException.Desktop.cs">
+      <Link>CyclicDependencyFoundException.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\DuplicateModuleException.cs">
+      <Link>DuplicateModuleException.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\DuplicateModuleException.Desktop.cs">
+      <Link>DuplicateModuleException.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\FileModuleTypeLoader.Desktop.cs">
+      <Link>FileModuleTypeLoader.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\IAssemblyResolver.Desktop.cs">
+      <Link>IAssemblyResolver.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\IConfigurationStore.Desktop.cs">
+      <Link>IConfigurationStore.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\IModule.cs">
+      <Link>IModule.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\IModuleCatalog.cs">
+      <Link>IModuleCatalog.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\IModuleCatalogItem.cs">
+      <Link>IModuleCatalogItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\IModuleInitializer.cs">
+      <Link>IModuleInitializer.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\IModuleManager.cs">
+      <Link>IModuleManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\IModuleTypeLoader.cs">
+      <Link>IModuleTypeLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\InitializationMode.cs">
+      <Link>InitializationMode.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\LoadModuleCompletedEventArgs.cs">
+      <Link>LoadModuleCompletedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModularityException.cs">
+      <Link>ModularityException.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModularityException.Desktop.cs">
+      <Link>ModularityException.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleAttribute.Desktop.cs">
+      <Link>ModuleAttribute.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleConfigurationElement.Desktop.cs">
+      <Link>ModuleConfigurationElement.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleConfigurationElementCollection.Desktop.cs">
+      <Link>ModuleConfigurationElementCollection.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleDependencyAttribute.Desktop.cs">
+      <Link>ModuleDependencyAttribute.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleDependencyCollection.Desktop.cs">
+      <Link>ModuleDependencyCollection.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleDependencyConfigurationElement.Desktop.cs">
+      <Link>ModuleDependencyConfigurationElement.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleDependencySolver.cs">
+      <Link>ModuleDependencySolver.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleDownloadProgressChangedEventArgs.cs">
+      <Link>ModuleDownloadProgressChangedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleInfo.cs">
+      <Link>ModuleInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleInfo.Desktop.cs">
+      <Link>ModuleInfo.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleInfoGroup.cs">
+      <Link>ModuleInfoGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleInfoGroupExtensions.cs">
+      <Link>ModuleInfoGroupExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleInitializeException.cs">
+      <Link>ModuleInitializeException.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleInitializeException.Desktop.cs">
+      <Link>ModuleInitializeException.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleInitializer.cs">
+      <Link>ModuleInitializer.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleManager.cs">
+      <Link>ModuleManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleManager.Desktop.cs">
+      <Link>ModuleManager.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleNotFoundException.cs">
+      <Link>ModuleNotFoundException.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleNotFoundException.Desktop.cs">
+      <Link>ModuleNotFoundException.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModulesConfigurationSection.Desktop.cs">
+      <Link>ModulesConfigurationSection.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleState.cs">
+      <Link>ModuleState.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleTypeLoaderNotFoundException.cs">
+      <Link>ModuleTypeLoaderNotFoundException.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleTypeLoaderNotFoundException.Desktop.cs">
+      <Link>ModuleTypeLoaderNotFoundException.Desktop.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleTypeLoadingException.cs">
+      <Link>ModuleTypeLoadingException.cs</Link>
+    </Compile>
+    <Compile Include="..\Wpf\Prism.Wpf\Modularity\ModuleTypeLoadingException.Desktop.cs">
+      <Link>ModuleTypeLoadingException.Desktop.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

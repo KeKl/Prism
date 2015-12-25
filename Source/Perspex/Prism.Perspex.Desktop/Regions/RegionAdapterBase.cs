@@ -82,7 +82,7 @@ namespace Prism.Regions
             IRegionBehaviorFactory behaviorFactory = this.RegionBehaviorFactory;
             if (behaviorFactory != null)
             {
-                var dependencyObjectRegionTarget = regionTarget as PerspexObject;
+                var objectRegionTarget = regionTarget as PerspexObject;
 
                 foreach (string behaviorKey in behaviorFactory)
                 {
@@ -90,12 +90,12 @@ namespace Prism.Regions
                     {
                         IRegionBehavior behavior = behaviorFactory.CreateFromKey(behaviorKey);
 
-                        if (dependencyObjectRegionTarget != null)
+                        if (objectRegionTarget != null)
                         {
                             IHostAwareRegionBehavior hostAwareRegionBehavior = behavior as IHostAwareRegionBehavior;
                             if (hostAwareRegionBehavior != null)
                             {
-                                hostAwareRegionBehavior.HostControl = dependencyObjectRegionTarget;
+                                hostAwareRegionBehavior.HostControl = objectRegionTarget;
                             }
                         }
 

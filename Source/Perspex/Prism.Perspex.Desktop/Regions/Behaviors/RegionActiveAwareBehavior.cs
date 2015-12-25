@@ -115,11 +115,11 @@ namespace Prism.Regions.Behaviors
                 return true;
             }
 
-            var viewAsFrameworkElement = view as IControl;
+            var control = view as IControl;
 
-            if (viewAsFrameworkElement != null)
+            if (control != null)
             {
-                var viewModel = viewAsFrameworkElement.DataContext;
+                var viewModel = control.DataContext;
 
                 return viewModel != null && Attribute.IsDefined(viewModel.GetType(), typeof(SyncActiveStateAttribute));
             }

@@ -40,10 +40,10 @@ namespace Prism.Regions.Behaviors
         {
             foreach (var view in views)
             {
-                var dependencyObjectView = view as PerspexObject;
-                if (dependencyObjectView != null)
+                var o = view as PerspexObject;
+                if (o != null)
                 {
-                    ObservableObject<object> contextWrapper = RegionContext.GetObservableContext(dependencyObjectView);
+                    ObservableObject<object> contextWrapper = RegionContext.GetObservableContext(o);
                     contextWrapper.Value = context;
                 }
             }
@@ -53,20 +53,15 @@ namespace Prism.Regions.Behaviors
         {
             foreach (var view in views)
             {
-                var dependencyObject = view as PerspexObject;
-                if (dependencyObject != null)
+                var o = view as PerspexObject;
+                if (o != null)
                 {
-                    ObservableObject<object> viewRegionContext = RegionContext.GetObservableContext(dependencyObject);
+                    ObservableObject<object> viewRegionContext = RegionContext.GetObservableContext(o);
                     viewRegionContext.PropertyChanged += this.ViewRegionContext_OnPropertyChangedEvent;
                 }
             }
         }
-
-        private void ViewRegionContext_PropertyChanged(object sender, PerspexPropertyChangedEventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
-
+        
         private void DetachNotifyChangeEvent(IEnumerable views)
         {
             foreach (var view in views)

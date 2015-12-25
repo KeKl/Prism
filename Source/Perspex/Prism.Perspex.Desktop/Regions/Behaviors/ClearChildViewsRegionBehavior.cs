@@ -70,12 +70,12 @@ namespace Prism.Regions.Behaviors
         {
             foreach (var view in region.Views)
             {
-                var dependencyObject = view as PerspexObject;
-                if (dependencyObject != null)
+                var o = view as PerspexObject;
+                if (o != null)
                 {
-                    if (GetClearChildViews(dependencyObject))
+                    if (GetClearChildViews(o))
                     {
-                        dependencyObject.ClearValue(RegionManager.RegionManagerProperty);
+                        o.ClearValue(RegionManager.RegionManagerProperty);
                     }
                 }
             }
