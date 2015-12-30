@@ -1,0 +1,12 @@
+﻿<Window xmlns="https://github.com/perspex"
+        xmlns:Regions="clr-namespace:Prism.Regions;assembly=Prism.Perspex.Desktop"
+        Width="500" Height="350">
+
+  <DockPanel LastChildFill="True">
+
+    <Button DockPanel.Dock="Bottom" Content="Next" Width="150" />
+    <ContentControl Name="ContentElement" Regions:RegionManager.RegionName="ContentRegion" />
+    
+  </DockPanel>
+  
+</Window>

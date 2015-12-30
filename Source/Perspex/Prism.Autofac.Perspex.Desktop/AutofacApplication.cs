@@ -3,12 +3,14 @@ using System.Globalization;
 using Autofac;
 using Autofac.Features.ResolveAnything;
 using Microsoft.Practices.ServiceLocation;
+using Perspex;
+using Perspex.Input;
 using Prism.Autofac.Properties;
 using Prism.Events;
 using Prism.Logging;
 using Prism.Modularity;
 using Prism.Mvvm;
-
+using Prism.Regions;
 using AutofacCore = Autofac.Core;
 
 namespace Prism.Autofac
@@ -83,10 +85,10 @@ namespace Prism.Autofac
             ConfigureViewModelLocator();
 
             Logger.Log(Resources.ConfiguringRegionAdapters, Category.Debug, Priority.Low);
-            //ConfigureRegionAdapterMappings();
+            ConfigureRegionAdapterMappings();
 
             Logger.Log(Resources.ConfiguringDefaultRegionBehaviors, Category.Debug, Priority.Low);
-            //ConfigureDefaultRegionBehaviors();
+            ConfigureDefaultRegionBehaviors();
 
             Logger.Log(Resources.RegisteringFrameworkExceptionTypes, Category.Debug, Priority.Low);
             RegisterFrameworkExceptionTypes();
@@ -96,10 +98,10 @@ namespace Prism.Autofac
             if (MainView != null)
             {
                 Logger.Log(Resources.SettingTheRegionManager, Category.Debug, Priority.Low);
-                //RegionManager.SetRegionManager(MainView, Container.Resolve<IRegionManager>());
+                RegionManager.SetRegionManager(MainView, Container.Resolve<IRegionManager>());
 
                 Logger.Log(Resources.UpdatingRegions, Category.Debug, Priority.Low);
-                //RegionManager.UpdateRegions();
+                RegionManager.UpdateRegions();
 
                 Logger.Log(Resources.InitializingShell, Category.Debug, Priority.Low);
                 InitializeMainView();
@@ -112,6 +114,9 @@ namespace Prism.Autofac
             }
 
             Logger.Log(Resources.BootstrapperSequenceCompleted, Category.Debug, Priority.Low);
+
+            Logger.Log(Resources.RunMainLoop, Category.Debug, Priority.Low);
+            Current.Run((ICloseable)MainView);
         }
 
         /// <summary>
@@ -168,15 +173,15 @@ namespace Prism.Autofac
             {
                 RegisterTypeIfMissing<IModuleInitializer, ModuleInitializer>(builder, true);
                 RegisterTypeIfMissing<IModuleManager, ModuleManager>(builder, true);
-                //RegisterTypeIfMissing<RegionAdapterMappings, RegionAdapterMappings>(builder, true);
-                //RegisterTypeIfMissing<IRegionManager, RegionManager>(builder, true);
+                RegisterTypeIfMissing<RegionAdapterMappings, RegionAdapterMappings>(builder, true);
+                RegisterTypeIfMissing<IRegionManager, RegionManager>(builder, true);
                 RegisterTypeIfMissing<IEventAggregator, EventAggregator>(builder, true);
-                //RegisterTypeIfMissing<IRegionViewRegistry, RegionViewRegistry>(builder, true);
-                //RegisterTypeIfMissing<IRegionBehaviorFactory, RegionBehaviorFactory>(builder, true);
-                //RegisterTypeIfMissing<IRegionNavigationJournalEntry, RegionNavigationJournalEntry>(builder, false);
-                //RegisterTypeIfMissing<IRegionNavigationJournal, RegionNavigationJournal>(builder, false);
-                //RegisterTypeIfMissing<IRegionNavigationService, RegionNavigationService>(builder, false);
-                //RegisterTypeIfMissing<IRegionNavigationContentLoader, RegionNavigationContentLoader>(builder, true);
+                RegisterTypeIfMissing<IRegionViewRegistry, RegionViewRegistry>(builder, true);
+                RegisterTypeIfMissing<IRegionBehaviorFactory, RegionBehaviorFactory>(builder, true);
+                RegisterTypeIfMissing<IRegionNavigationJournalEntry, RegionNavigationJournalEntry>(builder, false);
+                RegisterTypeIfMissing<IRegionNavigationJournal, RegionNavigationJournal>(builder, false);
+                RegisterTypeIfMissing<IRegionNavigationService, RegionNavigationService>(builder, false);
+                RegisterTypeIfMissing<IRegionNavigationContentLoader, RegionNavigationContentLoader>(builder, true);
             }
         }
 
@@ -260,11 +265,11 @@ namespace Prism.Autofac
         {
             if (fromType == null)
             {
-                throw new ArgumentNullException("fromType");
+                throw new ArgumentNullException(nameof(fromType));
             }
             if (toType == null)
             {
-                throw new ArgumentNullException("toType");
+                throw new ArgumentNullException(nameof(toType));
             }
             if (Container.IsRegistered(fromType))
             {
@@ -298,11 +303,11 @@ namespace Prism.Autofac
         {
             if (instance == null)
             {
-                throw new ArgumentNullException("instance");
+                throw new ArgumentNullException(nameof(instance));
             }
             if (fromType == null)
             {
-                throw new ArgumentNullException("fromType");
+                throw new ArgumentNullException(nameof(fromType));
             }
 
             ContainerBuilder containerUpdater = CreateContainerBuilder();

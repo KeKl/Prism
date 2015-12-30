@@ -4,6 +4,7 @@ using System.Windows;
 using Prism.Properties;
 using System.Globalization;
 using Perspex;
+using Perspex.Controls;
 
 namespace Prism.Regions.Behaviors
 {
@@ -93,7 +94,7 @@ namespace Prism.Regions.Behaviors
             PerspexObject targetElement = this.HostControl;
             if (targetElement.CheckAccess())
             {
-                IRegionManager regionManager = this.FindRegionManager(targetElement);
+                IRegionManager regionManager = this.FindRegionManager(targetElement as Control);
 
                 IRegionManager attachedRegionManager = this.GetAttachedRegionManager();
 
@@ -126,22 +127,20 @@ namespace Prism.Regions.Behaviors
             this.TryRegisterRegion();
         }
 
-        private IRegionManager FindRegionManager(PerspexObject dependencyObject)
+        private IRegionManager FindRegionManager(Control perspexObject)
         {
-            var regionmanager = this.RegionManagerAccessor.GetRegionManager(dependencyObject);
+            var regionmanager = this.RegionManagerAccessor.GetRegionManager(perspexObject);
             if (regionmanager != null)
             {
                 return regionmanager;
             }
 
-            PerspexObject parent = null;
-
-            throw new NotImplementedException();
-            //parent = LogicalTreeHelper.GetParent(dependencyObject);
-            //if (parent != null)
-            //{
-            //    return this.FindRegionManager(parent);
-            //}
+            var parent = perspexObject.Parent as Control;
+            
+            if (parent != null)
+            {
+                return this.FindRegionManager(parent);
+            }
 
             return null;
         }

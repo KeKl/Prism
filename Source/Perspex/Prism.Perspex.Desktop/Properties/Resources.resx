@@ -144,10 +144,10 @@
   <data name="DuplicatedModule" xml:space="preserve">
     <value>A duplicated module with name {0} has been found by the loader.</value>
   </data>
-  <data name="ItemsControlHasItemsSourceException" xml:space="preserve">
-    <value>ItemsControl's ItemsSource property is not empty. 
+  <data name="ItemsControlHasItemsException" xml:space="preserve">
+    <value>ItemsControl's Items property is not empty. 
     This control is being associated with a region, but the control is already bound to something else. 
-    If you did not explicitly set the control's ItemSource property, 
+    If you did not explicitly set the control's Items property, 
     this exception may be caused by a change in the value of the inherited RegionManager attached property.</value>
   </data>
   <data name="MappingExistsException" xml:space="preserve">

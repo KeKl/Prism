@@ -156,6 +156,9 @@
   <data name="RegisteringFrameworkExceptionTypes" xml:space="preserve">
     <value>Registering Framework Exception Types.</value>
   </data>
+  <data name="RunMainLoop" xml:space="preserve">
+    <value>Running the main loop.</value>
+  </data>
   <data name="TypeMappingAlreadyRegistered" xml:space="preserve">
     <value>Type '{0}' was already registered by the application. Skipping...</value>
   </data>

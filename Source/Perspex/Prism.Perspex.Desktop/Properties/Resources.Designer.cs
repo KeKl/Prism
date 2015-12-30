@@ -163,14 +163,14 @@ namespace Prism.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ItemsControl&apos;s ItemsSource property is not empty. 
+        ///   Looks up a localized string similar to ItemsControl&apos;s Items property is not empty. 
         ///    This control is being associated with a region, but the control is already bound to something else. 
-        ///    If you did not explicitly set the control&apos;s ItemSource property, 
+        ///    If you did not explicitly set the control&apos;s Items property, 
         ///    this exception may be caused by a change in the value of the inherited RegionManager attached property..
         /// </summary>
-        internal static string ItemsControlHasItemsSourceException {
+        internal static string ItemsControlHasItemsException {
             get {
-                return ResourceManager.GetString("ItemsControlHasItemsSourceException", resourceCulture);
+                return ResourceManager.GetString("ItemsControlHasItemsException", resourceCulture);
             }
         }
         

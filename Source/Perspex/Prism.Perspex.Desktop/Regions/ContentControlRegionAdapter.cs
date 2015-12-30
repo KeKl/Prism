@@ -30,9 +30,10 @@ namespace Prism.Regions
         {
             if (regionTarget == null) throw new ArgumentNullException(nameof(regionTarget));
             bool contentIsSet = regionTarget.Content != null;
-            
+
             // TODO this is different to the original implementation
             //contentIsSet = contentIsSet || (BindingOperations.GetBinding(regionTarget, ContentControl.ContentProperty) != null);
+            contentIsSet = contentIsSet || regionTarget.IsSet(ContentControl.ContentProperty);
 
             if (contentIsSet)
             {

@@ -226,8 +226,7 @@ namespace Prism.Regions
 
         private static bool IsInDesignMode(PerspexObject element)
         {
-            throw new NotImplementedException();
-            //return DesignerProperties.GetIsInDesignMode(element);
+            return Perspex.Design.IsDesignMode;
         }
 
         #endregion

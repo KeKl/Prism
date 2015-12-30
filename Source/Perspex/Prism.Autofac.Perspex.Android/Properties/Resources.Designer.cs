@@ -179,6 +179,15 @@ namespace Prism.Autofac.Perspex.Android.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Running the main loop..
+        /// </summary>
+        internal static string RunMainLoop {
+            get {
+                return ResourceManager.GetString("RunMainLoop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type &apos;{0}&apos; was already registered by the application. Skipping....
         /// </summary>
         internal static string TypeMappingAlreadyRegistered {

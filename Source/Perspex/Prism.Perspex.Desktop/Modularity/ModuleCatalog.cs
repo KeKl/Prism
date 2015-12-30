@@ -1,5 +1,3 @@
-
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,8 +6,9 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Windows.Markup;
+using OmniXaml;
 using OmniXaml.Attributes;
+using OmniXaml.Services.DotNetFx;
 using Prism.Properties;
 
 namespace Prism.Modularity
@@ -127,8 +126,6 @@ namespace Prism.Modularity
             }
 
             throw new NotImplementedException();
-
-            //return XamlReader.Load(xamlStream) as ModuleCatalog;
         }
 
         /// <summary>
@@ -140,9 +137,14 @@ namespace Prism.Modularity
         {
             if (xamlStream == null)
             {
-                throw new ArgumentNullException("xamlStream");
+                throw new ArgumentNullException(nameof(xamlStream));
             }
-            
+
+            //var wiringContext = WiringContext.FromAttributes(Assemblies.AssembliesInAppFolder);
+            //var loader = new ModuleXamlLoader(wiringContext);
+
+            //var model = loader.FromPath("Model.xaml");
+
             throw new NotImplementedException();
 
             //return XamlReader.Load(xamlStream) as ModuleCatalog;

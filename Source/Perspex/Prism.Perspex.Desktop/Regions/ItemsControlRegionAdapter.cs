@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Perspex;
 using Perspex.Controls;
 using Prism.Properties;
 
@@ -27,18 +28,21 @@ namespace Prism.Regions
         /// <param name="regionTarget">The object to adapt.</param>
         protected override void Adapt(IRegion region, ItemsControl regionTarget)
         {
+            // TODO this is currently not working.
+
             if (region == null) throw new ArgumentNullException(nameof(region));
             if (regionTarget == null) throw new ArgumentNullException(nameof(regionTarget));
-
+            
             bool itemsSourceIsSet = regionTarget.Items != null;
             // TODO this is different to the original implementation
             //itemsSourceIsSet = itemsSourceIsSet || (BindingOperations.GetBinding(regionTarget, ItemsControl.ItemsSourceProperty) != null);
+            itemsSourceIsSet = itemsSourceIsSet || regionTarget.IsSet(ItemsControl.ItemsProperty);
 
             if (itemsSourceIsSet)
             {
-                throw new InvalidOperationException(Resources.ItemsControlHasItemsSourceException);
+                throw new InvalidOperationException(Resources.ItemsControlHasItemsException);
             }
-            
+
             foreach (var childItem in regionTarget.Items)
             {
                 region.Add(childItem);

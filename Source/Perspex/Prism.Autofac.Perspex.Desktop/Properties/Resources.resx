@@ -174,6 +174,9 @@
   <data name="RegisteringFrameworkExceptionTypes" xml:space="preserve">
     <value>Registering Framework Exception Types.</value>
   </data>
+  <data name="RunMainLoop" xml:space="preserve">
+    <value>Running the main loop.</value>
+  </data>
   <data name="SettingTheRegionManager" xml:space="preserve">
     <value>Setting the RegionManager.</value>
   </data>

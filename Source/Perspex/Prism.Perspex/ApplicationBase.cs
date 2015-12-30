@@ -26,7 +26,7 @@ namespace Prism
         /// Gets the main user interface.
         /// </summary>
         /// <value>The main user interface.</value>
-        protected IControl MainView { get; set; }
+        protected PerspexObject MainView { get; set; }
 
         /// <summary>
         /// Create the <see cref="ILoggerFacade" /> used by the bootstrapper.
@@ -57,7 +57,7 @@ namespace Prism
         /// Creates the main view.
         /// </summary>
         /// <returns>The main view of the application.</returns>
-        protected virtual IControl CreateMainView() => null;
+        protected virtual PerspexObject CreateMainView() => null;
       
 
         /// <summary>

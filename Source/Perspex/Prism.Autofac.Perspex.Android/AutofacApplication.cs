@@ -3,6 +3,7 @@ using System.Globalization;
 using Autofac;
 using Autofac.Features.ResolveAnything;
 using Microsoft.Practices.ServiceLocation;
+using Perspex.Input;
 using Prism.Autofac.Perspex.Android.Properties;
 using Prism.Events;
 using Prism.Logging;
@@ -83,6 +84,9 @@ namespace Prism.Autofac
             }
 
             Logger.Log(Resources.BootstrapperSequenceCompleted, Category.Debug, Priority.Low);
+
+            Logger.Log(Resources.RunMainLoop, Category.Debug, Priority.Low);
+            Current.Run((ICloseable)MainView);
         }
 
         /// <summary>

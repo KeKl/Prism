@@ -13,7 +13,7 @@ namespace Prism.Regions.Behaviors
     public interface IHostAwareRegionBehavior : IRegionBehavior
     {
         /// <summary>
-        /// Gets or sets the <see cref="IControl"/> that the <see cref="IRegion"/> is attached to.
+        /// Gets or sets the <see cref="PerspexObject"/> that the <see cref="IRegion"/> is attached to.
         /// </summary>
         /// <value>A <see cref="IControl"/> that the <see cref="IRegion"/> is attached to.
         /// This is usually a <see cref="Control"/> that is part of the tree.</value>

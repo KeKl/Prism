@@ -232,6 +232,15 @@ namespace Prism.Autofac.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Running the main loop..
+        /// </summary>
+        internal static string RunMainLoop {
+            get {
+                return ResourceManager.GetString("RunMainLoop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting the RegionManager..
         /// </summary>
         internal static string SettingTheRegionManager {

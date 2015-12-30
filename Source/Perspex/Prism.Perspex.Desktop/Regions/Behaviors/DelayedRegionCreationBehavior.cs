@@ -118,7 +118,7 @@ namespace Prism.Regions.Behaviors
         /// <returns>The created <see cref="IRegion"/></returns>
         protected virtual IRegion CreateRegion(PerspexObject targetElement, string regionName)
         {
-            if (targetElement == null) throw new ArgumentNullException("targetElement");
+            if (targetElement == null) throw new ArgumentNullException(nameof(targetElement));
             try
             {
                 // Build the region
@@ -133,7 +133,7 @@ namespace Prism.Regions.Behaviors
             }
         }
 
-        private void ElementLoaded(object sender, RoutedEventArgs e)
+        private void ElementLoaded(object sender, VisualTreeAttachmentEventArgs e)
         {
             this.UnWireTargetElement();
             this.TryCreateRegion();
@@ -144,9 +144,8 @@ namespace Prism.Regions.Behaviors
             var element = this.TargetElement as IControl;
             if (element != null)
             {
-                // TODO Add
-                throw new NotImplementedException();
-                //element.Loaded += this.ElementLoaded;
+                // TODO Working?
+                element.AttachedToVisualTree += this.ElementLoaded;
             }
         }
 
@@ -155,9 +154,8 @@ namespace Prism.Regions.Behaviors
             var element = this.TargetElement as IControl;
             if (element != null)
             {
-                // TODO Add
-                throw new NotImplementedException();
-                //element.Loaded -= this.ElementLoaded;
+                // TODO Working?
+                element.AttachedToVisualTree -= this.ElementLoaded;
             }
         }
     }

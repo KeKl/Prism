@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Microsoft.Practices.ServiceLocation;
 using NUnit.Framework;
+using Perspex;
 using Perspex.Controls;
 using Prism.Logging;
 using Prism.Modularity;
@@ -239,7 +240,7 @@ namespace Prism.Perspex.Desktop.Tests
             set { base.ModuleCatalog = value; }
         }
 
-        public IControl BaseMainView
+        public PerspexObject BaseMainView
         {
             get { return base.MainView; }
             set { base.MainView = value; }

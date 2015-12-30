@@ -2,6 +2,7 @@
 using Autofac;
 using HelloWorld.AutofacModules;
 using HelloWorld.Logging;
+using Perspex;
 using Perspex.Controls;
 using Perspex.Markup.Xaml;
 using Perspex.Themes.Default;
@@ -61,9 +62,9 @@ namespace HelloWorld
         /// Creates the shell.
         /// </summary>
         /// <returns></returns>
-        protected override IControl CreateMainView()
+        protected override PerspexObject CreateMainView()
         {
-            return Container.Resolve<IControl>();
+            return (PerspexObject) Container.Resolve<IControl>();
         }
 
         /// <summary>
@@ -71,13 +72,9 @@ namespace HelloWorld
         /// </summary>
         protected override void InitializeMainView()
         {
-            base.InitializeMainView();
-
             var window = (Window)this.MainView;
 
             window.Show();
-
-            Application.Current.Run(window);
         }
     }
 }

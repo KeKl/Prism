@@ -3,6 +3,7 @@ using Autofac;
 using Microsoft.Practices.ServiceLocation;
 using ModularityWithAutofac.AutofacModules;
 using ModuleTracking;
+using Perspex;
 using Perspex.Controls;
 using Perspex.Markup.Xaml;
 using Perspex.Themes.Default;
@@ -107,9 +108,9 @@ namespace ModularityWithAutofac
         /// Creates the shell or main window of the application.
         /// </summary>
         /// <returns>The shell of the application.</returns>
-        protected override IControl CreateMainView()
+        protected override PerspexObject CreateMainView()
         {
-            return ServiceLocator.Current.GetInstance<Shell>();
+            return (PerspexObject) ServiceLocator.Current.GetInstance<Shell>();
         }
 
         /// <summary>
@@ -124,8 +125,6 @@ namespace ModularityWithAutofac
 
             var window = (Window)this.MainView;
             window.Show();
-
-            Application.Current.Run(window);
         }
     }
 }

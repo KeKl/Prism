@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using Perspex;
+using Perspex.Controls;
 using Perspex.Controls.Primitives;
 using Prism.Properties;
 
@@ -52,16 +53,18 @@ namespace Prism.Regions.Behaviors
         protected override void OnAttach()
         {
             bool itemsSourceIsSet = this.hostControl.Items != null;
-            // TODO how to do this on perspex
+            // TODO this is different to the original implementation
             //itemsSourceIsSet = itemsSourceIsSet || (BindingOperations.GetBinding(this.hostControl, ItemsControl.ItemsSourceProperty) != null);
+            itemsSourceIsSet = itemsSourceIsSet || hostControl.IsSet(ItemsControl.ItemsProperty);
 
             if (itemsSourceIsSet)
             {
-                throw new InvalidOperationException(Resources.ItemsControlHasItemsSourceException);
+                throw new InvalidOperationException(Resources.ItemsControlHasItemsException);
             }
 
             this.SynchronizeItems();
 
+            // TODO implement
             throw new NotImplementedException();
             //this.hostControl.SelectionChanged += this.HostControlSelectionChanged;
             this.Region.ActiveViews.CollectionChanged += this.ActiveViews_CollectionChanged;
